@@ -1,0 +1,5198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="description"
+    content="Batallando con Dionisio Santana — Noticias, análisis político y programas de televisión desde República Dominicana." />
+  <meta name="keywords"
+    content="Batallando, Dionisio Santana, noticias dominicanas, política RD, televisión, República Dominicana" />
+  <meta name="author" content="Dionisio Santana" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Batallando con Dionisio Santana" />
+  <meta property="og:description" content="Tu fuente de noticias y análisis político en República Dominicana." />
+  <meta property="og:url" content="https://batallando.tv" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>BatallandoTv</title>
+  <link rel="icon" type="image/png" href="assets/Batallando/Batallando TV 2024.png" width="100" height="100" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Barlow:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════ */
+    :root {
+      --red: #CE1126;
+      --red-dark: #9e0d1e;
+      --red-light: #ff1f3d;
+      --blue: #1858e3;
+      --blue-dark: #0f3fb5;
+      --blue-mid: #2467f0;
+      --blue-light: #3d7fff;
+      --sky: #21c8f2;
+      --sky-dark: #0fa8d2;
+      --sky-light: #6edcf7;
+      --white: #ffffff;
+      --off-white: #f8f6f3;
+      --light-gray: #eef0f4;
+      --mid-gray: #9aa3b0;
+      --dark-gray: #3d4452;
+      --charcoal: #1a1d26;
+      --black: #0a0b0f;
+      --gold: #f0a500;
+      --font-display: 'Oswald', sans-serif;
+      --font-body: 'Merriweather', serif;
+      --font-ui: 'Barlow', sans-serif;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, .12);
+      --shadow-md: 0 6px 24px rgba(0, 0, 0, .18);
+      --shadow-lg: 0 16px 48px rgba(0, 0, 0, .25);
+      --shadow-xl: 0 32px 80px rgba(0, 0, 0, .35);
+      --shadow-red: 0 8px 32px rgba(206, 17, 38, .35);
+      --shadow-blue: 0 8px 32px rgba(24, 88, 227, .4);
+      --shadow-sky: 0 8px 32px rgba(33, 200, 242, .35);
+      --radius: 6px;
+      --radius-lg: 12px;
+      --radius-xl: 20px;
+      --transition: .3s cubic-bezier(.4, 0, .2, 1);
+      --transition-slow: .6s cubic-bezier(.4, 0, .2, 1);
+      --transition-spring: .4s cubic-bezier(.34, 1.56, .64, 1);
+      --ease-out-expo: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--off-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none
+    }
+
+    body:not(.loaded) {
+      overflow: hidden
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit
+    }
+
+    ul {
+      list-style: none
+    }
+
+    .no-select {
+      user-select: none;
+      -webkit-user-select: none
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--charcoal)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--blue);
+      border-radius: 3px
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--sky)
+    }
+
+    /* ═══════════════════════════════════════
+   ★ 3D INTRO OVERLAY
+═══════════════════════════════════════ */
+    #bb-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      overflow: hidden;
+      font-family: var(--font-display), 'Impact', sans-serif;
+      transition: opacity 1.4s cubic-bezier(.4, 0, .2, 1), visibility 1.4s;
+    }
+
+    #bb-intro.bb-exit {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none
+    }
+
+    #bb-vbg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2.5s ease
+    }
+
+    #bb-vbg.bb-vis {
+      opacity: 1
+    }
+
+    .bb-vig {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 15%, rgba(0, 0, 0, .9) 100%);
+      z-index: 1;
+      pointer-events: none
+    }
+
+    .bb-cg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(24, 88, 227, .45) 0%, rgba(0, 0, 0, .05) 40%, rgba(206, 17, 38, .3) 100%);
+      z-index: 2;
+      pointer-events: none;
+      mix-blend-mode: color
+    }
+
+    .bb-sl {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, .06) 2px, rgba(0, 0, 0, .06) 4px);
+      z-index: 3;
+      pointer-events: none
+    }
+
+    #bb-beam {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 3px;
+      z-index: 4;
+      background: linear-gradient(90deg, transparent, rgba(33, 200, 242, .6), transparent);
+      animation: bbScan 3s linear infinite;
+      pointer-events: none;
+      top: -3px
+    }
+
+    #bb-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none
+    }
+
+    .bb-rings {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none
+    }
+
+    .bb-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid;
+      animation: bbRingPulse 2.5s ease-in-out infinite
+    }
+
+    .bb-ring:nth-child(1) {
+      width: 240px;
+      height: 240px;
+      border-color: rgba(33, 200, 242, .35);
+      animation-delay: 0s
+    }
+
+    .bb-ring:nth-child(2) {
+      width: 320px;
+      height: 320px;
+      border-color: rgba(24, 88, 227, .25);
+      animation-delay: .6s
+    }
+
+    .bb-ring:nth-child(3) {
+      width: 420px;
+      height: 420px;
+      border-color: rgba(206, 17, 38, .15);
+      animation-delay: 1.2s
+    }
+
+    .bb-stage {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      perspective: 1400px
+    }
+
+    /* 3D Cube */
+    .bb-cube-wrap {
+      width: 160px;
+      height: 160px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: bbCubeSpin 9s linear infinite;
+      margin-bottom: 48px;
+      flex-shrink: 0
+    }
+
+    .bb-face {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border: 2px solid rgba(33, 200, 242, .55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      font-weight: 900;
+      color: #fff;
+      backface-visibility: hidden;
+      text-shadow: 0 0 24px rgba(255, 255, 255, .9)
+    }
+
+    .bb-face-f {
+      background: linear-gradient(135deg, rgba(24, 88, 227, .95), rgba(33, 200, 242, .8));
+      transform: translateZ(80px);
+      box-shadow: 0 0 60px rgba(33, 200, 242, .7) inset, 0 0 30px rgba(33, 200, 242, .25)
+    }
+
+    .bb-face-bk {
+      background: linear-gradient(135deg, rgba(206, 17, 38, .95), rgba(158, 13, 30, .8));
+      transform: rotateY(180deg) translateZ(80px);
+      box-shadow: 0 0 60px rgba(206, 17, 38, .7) inset
+    }
+
+    .bb-face-r {
+      background: linear-gradient(135deg, rgba(24, 88, 227, .8), rgba(15, 63, 181, .9));
+      transform: rotateY(90deg) translateZ(80px)
+    }
+
+    .bb-face-l {
+      background: linear-gradient(135deg, rgba(33, 200, 242, .8), rgba(24, 88, 227, .9));
+      transform: rotateY(-90deg) translateZ(80px)
+    }
+
+    .bb-face-t {
+      background: linear-gradient(135deg, rgba(240, 165, 0, .8), rgba(206, 17, 38, .7));
+      transform: rotateX(90deg) translateZ(80px)
+    }
+
+    .bb-face-bo {
+      background: linear-gradient(135deg, rgba(10, 11, 15, .9), rgba(26, 29, 38, .95));
+      transform: rotateX(-90deg) translateZ(80px)
+    }
+
+    /* Brand text */
+    .bb-brand {
+      opacity: 0;
+      transform: translateY(32px) scale(.94);
+      transition: opacity .9s ease, transform .9s cubic-bezier(.34, 1.56, .64, 1)
+    }
+
+    .bb-brand.bb-show {
+      opacity: 1;
+      transform: translateY(0) scale(1)
+    }
+
+    .bb-title {
+      font-size: clamp(52px, 9vw, 104px);
+      font-weight: 700;
+      line-height: .92;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #1858e3, #21c8f2, #fff, #21c8f2, #CE1126, #21c8f2, #1858e3);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: bbGFlow 3.5s linear infinite;
+      filter: drop-shadow(0 0 50px rgba(33, 200, 242, .55));
+    }
+
+    .bb-tsub {
+      font-size: clamp(10px, 2vw, 18px);
+      font-weight: 300;
+      letter-spacing: .45em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .5);
+      margin-top: 10px
+    }
+
+    .bb-div {
+      width: 0;
+      height: 2px;
+      margin: 24px auto;
+      background: linear-gradient(90deg, transparent, #21c8f2, #CE1126, #21c8f2, transparent);
+      transition: width 1.3s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .bb-div.bb-expand {
+      width: min(420px, 82vw)
+    }
+
+    .bb-con {
+      font-size: clamp(11px, 1.8vw, 17px);
+      font-weight: 300;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .6);
+      margin-bottom: 4px
+    }
+
+    .bb-host {
+      font-size: clamp(20px, 3.8vw, 38px);
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: #21c8f2;
+      text-transform: uppercase;
+      text-shadow: 0 0 36px rgba(33, 200, 242, .9)
+    }
+
+    /* CTA */
+    .bb-cta {
+      margin-top: 52px;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .9s ease .5s, transform .9s cubic-bezier(.34, 1.56, .64, 1) .5s
+    }
+
+    .bb-cta.bb-show {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .bb-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 56px;
+      font-family: var(--font-display), 'Impact', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, #1858e3, #21c8f2);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(33, 200, 242, .5), 0 8px 48px rgba(24, 88, 227, .75), 0 0 80px rgba(33, 200, 242, .22);
+      transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s ease;
+    }
+
+    .bb-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .28), transparent);
+      transform: translateX(-100%);
+      transition: transform .65s ease
+    }
+
+    .bb-btn:hover::before {
+      transform: translateX(100%)
+    }
+
+    .bb-btn:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 0 0 1px rgba(33, 200, 242, .9), 0 20px 70px rgba(24, 88, 227, .9), 0 0 110px rgba(33, 200, 242, .45)
+    }
+
+    .bb-btn:active {
+      transform: scale(.97)
+    }
+
+    .bb-bico {
+      width: 26px;
+      height: 26px;
+      fill: #fff;
+      flex-shrink: 0;
+      animation: bbIconP 1.6s ease infinite
+    }
+
+    .bb-hint {
+      margin-top: 16px;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: rgba(255, 255, 255, .28);
+      text-transform: uppercase
+    }
+
+    .bb-skip {
+      position: absolute;
+      bottom: 28px;
+      right: 28px;
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .3);
+      background: none;
+      border: 1px solid rgba(255, 255, 255, .1);
+      padding: 9px 22px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: color .3s, border-color .3s;
+      z-index: 20
+    }
+
+    .bb-skip:hover {
+      color: rgba(255, 255, 255, .8);
+      border-color: rgba(33, 200, 242, .5)
+    }
+
+    .bb-flag-bot {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      display: flex;
+      z-index: 20
+    }
+
+    .bb-flag-bot span {
+      flex: 1
+    }
+
+    .bb-flag-bot span:nth-child(1) {
+      background: #1858e3
+    }
+
+    .bb-flag-bot span:nth-child(2) {
+      background: #21c8f2
+    }
+
+    .bb-flag-bot span:nth-child(3) {
+      background: #CE1126
+    }
+
+    .bb-flag-bot span:nth-child(4) {
+      background: #21c8f2
+    }
+
+    .bb-flag-bot span:nth-child(5) {
+      background: #1858e3
+    }
+
+    .bb-ldr {
+      position: absolute;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      transition: opacity .7s ease
+    }
+
+    .bb-ldr.bb-hide {
+      opacity: 0;
+      pointer-events: none
+    }
+
+    .bb-lring {
+      width: 58px;
+      height: 58px;
+      border: 3px solid rgba(33, 200, 242, .18);
+      border-top-color: #21c8f2;
+      border-radius: 50%;
+      animation: bbSpin .85s linear infinite
+    }
+
+    /* Keyframes */
+    @keyframes bbScan {
+      from {
+        top: -3px
+      }
+
+      to {
+        top: 100%
+      }
+    }
+
+    @keyframes bbCubeSpin {
+      0% {
+        transform: rotateX(-14deg) rotateY(0deg)
+      }
+
+      100% {
+        transform: rotateX(-14deg) rotateY(360deg)
+      }
+    }
+
+    @keyframes bbRingPulse {
+
+      0%,
+      100% {
+        opacity: .35;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.06)
+      }
+    }
+
+    @keyframes bbGFlow {
+      0% {
+        background-position: 0% 50%
+      }
+
+      100% {
+        background-position: 300% 50%
+      }
+    }
+
+    @keyframes bbIconP {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.25)
+      }
+    }
+
+    @keyframes bbSpin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    @media(max-width:640px) {
+      .bb-cube-wrap {
+        width: 120px !important;
+        height: 120px !important
+      }
+
+      .bb-face {
+        width: 120px !important;
+        height: 120px !important;
+        font-size: 38px !important
+      }
+
+      .bb-face-f {
+        transform: translateZ(60px) !important
+      }
+
+      .bb-face-bk {
+        transform: rotateY(180deg) translateZ(60px) !important
+      }
+
+      .bb-face-r {
+        transform: rotateY(90deg) translateZ(60px) !important
+      }
+
+      .bb-face-l {
+        transform: rotateY(-90deg) translateZ(60px) !important
+      }
+
+      .bb-face-t {
+        transform: rotateX(90deg) translateZ(60px) !important
+      }
+
+      .bb-face-bo {
+        transform: rotateX(-90deg) translateZ(60px) !important
+      }
+
+      .bb-btn {
+        padding: 16px 32px;
+        font-size: 16px
+      }
+
+      .bb-ring:nth-child(1) {
+        width: 180px !important;
+        height: 180px !important
+      }
+
+      .bb-ring:nth-child(2) {
+        width: 240px !important;
+        height: 240px !important
+      }
+
+      .bb-ring:nth-child(3) {
+        width: 300px !important;
+        height: 300px !important
+      }
+    }
+
+    /* ═══════════════════════════════════════
+   PRELOADER
+═══════════════════════════════════════ */
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, #1035a0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 28px;
+      transition: opacity .6s var(--ease-out-expo), visibility .6s var(--ease-out-expo)
+    }
+
+    .preloader.loaded {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none
+    }
+
+    .preloader__logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      animation: preloaderPulse 1.4s ease-in-out infinite
+    }
+
+    .preloader__icon {
+      width: 72px;
+      height: 72px;
+      background: var(--red);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--white);
+      box-shadow: var(--shadow-red);
+      position: relative;
+      overflow: hidden
+    }
+
+    .preloader__icon::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .25) 0%, transparent 60%)
+    }
+
+    .preloader__brand {
+      display: flex;
+      flex-direction: column
+    }
+
+    .preloader__title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .04em;
+      line-height: 1
+    }
+
+    .preloader__sub {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      color: rgba(255, 255, 255, .55);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-top: 4px
+    }
+
+    .preloader__bar-wrap {
+      width: 220px;
+      height: 3px;
+      background: rgba(255, 255, 255, .15);
+      border-radius: 3px;
+      overflow: hidden
+    }
+
+    .preloader__bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--sky), var(--red));
+      border-radius: 3px;
+      animation: preloaderBar 1.8s var(--ease-out-expo) forwards;
+      transform-origin: left;
+      transform: scaleX(0)
+    }
+
+    .preloader__flag {
+      display: flex;
+      gap: 6px;
+      align-items: center
+    }
+
+    .preloader__flag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%
+    }
+
+    .preloader__flag-dot:nth-child(1) {
+      background: var(--sky);
+      animation: dotBounce .9s ease infinite
+    }
+
+    .preloader__flag-dot:nth-child(2) {
+      background: var(--red);
+      animation: dotBounce .9s ease .15s infinite
+    }
+
+    .preloader__flag-dot:nth-child(3) {
+      background: var(--white);
+      animation: dotBounce .9s ease .3s infinite
+    }
+
+    @keyframes preloaderPulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.03)
+      }
+    }
+
+    @keyframes preloaderBar {
+      0% {
+        transform: scaleX(0)
+      }
+
+      100% {
+        transform: scaleX(1)
+      }
+    }
+
+    @keyframes dotBounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+        opacity: 1
+      }
+
+      50% {
+        transform: translateY(-6px);
+        opacity: .6
+      }
+    }
+
+    /* ═══ TOAST ═══ */
+    .toast-container {
+      position: fixed;
+      bottom: 88px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none
+    }
+
+    .toast {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 14px 24px;
+      border-radius: 40px;
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 600;
+      border-left: 4px solid var(--sky);
+      box-shadow: var(--shadow-lg);
+      animation: toastSlide .5s var(--ease-out-expo) both, toastFade 3.5s ease 1s forwards;
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 90vw;
+      white-space: normal;
+      text-align: center
+    }
+
+    @keyframes toastSlide {
+      from {
+        transform: translateY(20px);
+        opacity: 0
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1
+      }
+    }
+
+    @keyframes toastFade {
+      from {
+        opacity: 1
+      }
+
+      to {
+        opacity: 0;
+        pointer-events: none
+      }
+    }
+
+    /* ═══ UTILITIES ═══ */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-radius: 3px
+    }
+
+    .tag--red {
+      background: var(--red);
+      color: var(--white)
+    }
+
+    .tag--blue {
+      background: var(--blue);
+      color: var(--white)
+    }
+
+    .tag--sky {
+      background: var(--sky);
+      color: var(--charcoal)
+    }
+
+    .tag--gold {
+      background: var(--gold);
+      color: var(--black)
+    }
+
+    .tag--outline {
+      border: 1.5px solid var(--blue);
+      color: var(--blue)
+    }
+
+    .tag--live {
+      background: var(--red);
+      color: var(--white);
+      animation: tagPulse 2s ease infinite
+    }
+
+    @keyframes tagPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(206, 17, 38, .5)
+      }
+
+      50% {
+        box-shadow: 0 0 0 8px rgba(206, 17, 38, 0)
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0);
+      transition: var(--transition)
+    }
+
+    .btn:hover::after {
+      background: rgba(255, 255, 255, .08)
+    }
+
+    .btn--red {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: var(--shadow-red)
+    }
+
+    .btn--red:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(206, 17, 38, .45)
+    }
+
+    .btn--blue {
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: var(--shadow-blue)
+    }
+
+    .btn--blue:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px)
+    }
+
+    .btn--sky {
+      background: var(--sky);
+      color: var(--charcoal);
+      box-shadow: var(--shadow-sky)
+    }
+
+    .btn--sky:hover {
+      background: var(--sky-dark);
+      transform: translateY(-2px);
+      color: var(--white)
+    }
+
+    .btn--outline {
+      border: 2px solid var(--white);
+      color: var(--white)
+    }
+
+    .btn--outline:hover {
+      background: var(--white);
+      color: var(--blue)
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0
+    }
+
+    /* ═══ ANIMATIONS ═══ */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(32px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(100%)
+      }
+
+      to {
+        transform: translateX(-100%)
+      }
+    }
+
+    @keyframes pulseDot {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(206, 17, 38, .6)
+      }
+
+      50% {
+        box-shadow: 0 0 0 10px rgba(206, 17, 38, 0)
+      }
+    }
+
+    @keyframes scanLine {
+      0% {
+        transform: translateY(-100%)
+      }
+
+      100% {
+        transform: translateY(400%)
+      }
+    }
+
+    @keyframes glowPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(33, 200, 242, .3)
+      }
+
+      50% {
+        box-shadow: 0 0 50px rgba(33, 200, 242, .7), 0 0 80px rgba(24, 88, 227, .3)
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -468px 0
+      }
+
+      100% {
+        background-position: 468px 0
+      }
+    }
+
+    .animate-fade-up {
+      animation: fadeUp .75s var(--ease-out-expo) both
+    }
+
+    .delay-1 {
+      animation-delay: .1s
+    }
+
+    .delay-2 {
+      animation-delay: .22s
+    }
+
+    .delay-3 {
+      animation-delay: .34s
+    }
+
+    .delay-4 {
+      animation-delay: .46s
+    }
+
+    /* ═══ BREAKING BAR ═══ */
+    .breaking-bar {
+      background: var(--red);
+      color: var(--white);
+      height: 38px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      z-index: 200
+    }
+
+    .breaking-bar__label {
+      flex-shrink: 0;
+      padding: 0 20px;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: var(--charcoal);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 2
+    }
+
+    .breaking-bar__label::after {
+      content: '';
+      position: absolute;
+      right: -14px;
+      top: 0;
+      border-top: 19px solid transparent;
+      border-bottom: 19px solid transparent;
+      border-left: 14px solid var(--charcoal);
+      z-index: 3
+    }
+
+    .breaking-bar__track {
+      flex: 1;
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%)
+    }
+
+    .breaking-bar__ticker {
+      display: flex;
+      white-space: nowrap;
+      animation: ticker 50s linear infinite;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500
+    }
+
+    .breaking-bar__ticker:hover {
+      animation-play-state: paused
+    }
+
+    .breaking-bar__item {
+      padding: 0 40px
+    }
+
+    .breaking-bar__item span {
+      color: var(--sky-light);
+      font-weight: 700;
+      margin-right: 8px
+    }
+
+    .blink-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--white);
+      animation: pulseDot 1.5s ease infinite;
+      display: inline-block;
+      flex-shrink: 0
+    }
+
+    /* ═══ TOPBAR ═══ */
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--light-gray);
+      padding: 8px 0;
+      font-family: var(--font-ui);
+      font-size: 12px;
+      color: var(--mid-gray)
+    }
+
+    .topbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap
+    }
+
+    .topbar__left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap
+    }
+
+    .topbar__right {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .topbar__date {
+      font-weight: 600;
+      color: var(--dark-gray)
+    }
+
+    .topbar__social {
+      display: flex;
+      gap: 8px
+    }
+
+    .topbar__social a {
+      width: 28px;
+      height: 28px;
+      background: var(--light-gray);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-gray);
+      transition: var(--transition);
+      font-size: 13px
+    }
+
+    .topbar__social a:hover {
+      background: var(--blue);
+      color: var(--white);
+      transform: scale(1.12)
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition)
+    }
+
+    .live-badge:hover {
+      background: var(--red-dark);
+      transform: scale(1.05)
+    }
+
+    /* ═══ NAVBAR ═══ */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100
+    }
+
+    .header.active .navbar {
+      box-shadow: 0 4px 32px rgba(0, 0, 0, .35)
+    }
+
+    .navbar {
+      background: rgba(13, 26, 61, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--transition)
+    }
+
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      height: 72px;
+      gap: 0
+    }
+
+    .navbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-right: 28px;
+      border-right: 1px solid rgba(255, 255, 255, .15);
+      flex-shrink: 0;
+      transition: var(--transition)
+    }
+
+    .navbar__logo:hover {
+      opacity: .9
+    }
+
+    .navbar__logo-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--red);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -1px;
+      box-shadow: var(--shadow-red);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0
+    }
+
+    .navbar__logo-icon::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .25) 0%, transparent 60%)
+    }
+
+    .navbar__logo-text {
+      display: flex;
+      flex-direction: column
+    }
+
+    .navbar__logo-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .02em;
+      line-height: 1
+    }
+
+    .navbar__logo-sub {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      color: rgba(255, 255, 255, .55);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-top: 3px
+    }
+
+    .navbar__nav {
+      display: flex;
+      flex: 1;
+      padding: 0 20px;
+      overflow-x: auto;
+      scrollbar-width: none
+    }
+
+    .navbar__nav::-webkit-scrollbar {
+      display: none
+    }
+
+    .navbar__nav a {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0 13px;
+      height: 72px;
+      font-family: var(--font-ui);
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .72);
+      transition: var(--transition);
+      position: relative;
+      white-space: nowrap;
+      flex-shrink: 0
+    }
+
+    .navbar__nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--sky);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+      border-radius: 3px 3px 0 0
+    }
+
+    .navbar__nav a:hover {
+      color: var(--white)
+    }
+
+    .navbar__nav a:hover::after,
+    .navbar__nav a.active::after {
+      transform: scaleX(1)
+    }
+
+    .navbar__nav a.active {
+      color: var(--white)
+    }
+
+    .navbar__actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 16px;
+      border-left: 1px solid rgba(255, 255, 255, .15);
+      flex-shrink: 0
+    }
+
+    .navbar__search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: var(--radius);
+      padding: 8px 14px;
+      color: rgba(255, 255, 255, .7);
+      transition: var(--transition)
+    }
+
+    .navbar__search input {
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--white);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      width: 150px
+    }
+
+    .navbar__search input::placeholder {
+      color: rgba(255, 255, 255, .45)
+    }
+
+    .navbar__search:focus-within {
+      background: rgba(255, 255, 255, .18);
+      border-color: var(--sky)
+    }
+
+    .navbar__search svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0
+    }
+
+    .navbar__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      color: var(--white);
+      border-radius: var(--radius);
+      transition: var(--transition);
+      flex-shrink: 0
+    }
+
+    .navbar__hamburger:hover {
+      background: rgba(255, 255, 255, .1)
+    }
+
+    .navbar__hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: var(--transition)
+    }
+
+    .navbar__hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg)
+    }
+
+    .navbar__hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0)
+    }
+
+    .navbar__hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg)
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(380px, 100vw);
+      z-index: 300;
+      background: linear-gradient(160deg, var(--navy), var(--charcoal));
+      flex-direction: column;
+      padding: 90px 32px 40px;
+      transform: translateX(100%);
+      transition: transform .5s var(--ease-out-expo);
+      box-shadow: -20px 0 60px rgba(0, 0, 0, .4);
+      overflow-y: auto
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0)
+    }
+
+    .mobile-menu__overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 299;
+      background: rgba(0, 0, 0, .5);
+      opacity: 0;
+      transition: opacity .4s ease, visibility .4s ease;
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    .mobile-menu__overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, .8);
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none
+    }
+
+    .mobile-menu a:hover {
+      color: var(--white);
+      padding-left: 12px
+    }
+
+    .mobile-menu a::before {
+      content: '›';
+      color: var(--sky);
+      font-size: 28px;
+      line-height: 1
+    }
+
+    .mobile-menu__close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, .1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 18px;
+      cursor: pointer;
+      transition: var(--transition)
+    }
+
+    .mobile-menu__close:hover {
+      background: var(--red);
+      transform: rotate(90deg)
+    }
+
+    .mobile-menu__social {
+      display: flex;
+      gap: 10px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, .1)
+    }
+
+    .mobile-menu__social a {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      padding: 0;
+      border: none;
+      flex-shrink: 0
+    }
+
+    .mobile-menu__social a::before {
+      display: none
+    }
+
+    .mobile-menu__social a:hover {
+      background: var(--sky);
+      padding-left: 0
+    }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(24, 88, 227, .6) 0%, transparent 70%), radial-gradient(ellipse 50% 80% at 0% 50%, rgba(33, 200, 242, .12) 0%, transparent 60%), linear-gradient(160deg, #060a18 0%, #0d1a3d 50%, #0a0b0f 100%)
+    }
+
+    .hero__grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(33, 200, 242, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(33, 200, 242, .04) 1px, transparent 1px);
+      background-size: 50px 50px
+    }
+
+    .hero__scanline {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1
+    }
+
+    .hero__scanline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(33, 200, 242, .35), transparent);
+      animation: scanLine 4s ease-in-out infinite
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 48px;
+      align-items: stretch;
+      min-height: 600px;
+      padding: 52px 0
+    }
+
+    .hero__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .hero__overline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px
+    }
+
+    .hero__overline-line {
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sky), var(--blue-light));
+      border-radius: 2px
+    }
+
+    .hero__overline-text {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--sky)
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.5vw, 62px);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 20px
+    }
+
+    .hero__title em {
+      color: var(--sky);
+      font-style: normal
+    }
+
+    .hero__desc {
+      font-size: 15.5px;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, .62);
+      margin-bottom: 32px;
+      max-width: 520px
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .hero__stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      flex-wrap: wrap
+    }
+
+    .hero__stat-number {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1
+    }
+
+    .hero__stat-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: rgba(255, 255, 255, .48);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-top: 5px
+    }
+
+    .hero__media {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 16px
+    }
+
+    .hero__video-main {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid rgba(33, 200, 242, .2);
+      flex: 1;
+      aspect-ratio: 16/9;
+      background: transparent
+    }
+
+    .hero__video-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 5
+    }
+
+    .hero__mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    .hero__mini-card {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition)
+    }
+
+    .hero__mini-card:hover {
+      border-color: var(--sky);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(33, 200, 242, .2)
+    }
+
+    .hero__mini-thumb {
+      aspect-ratio: 16/9;
+      background: var(--blue-mid);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero__mini-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      background: rgba(0, 0, 0, .2);
+      transition: var(--transition)
+    }
+
+    .hero__mini-info {
+      padding: 8px 10px
+    }
+
+    .hero__mini-title {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, .85);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden
+    }
+
+    .hero__mini-meta {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      color: rgba(255, 255, 255, .4);
+      margin-top: 4px
+    }
+
+    /* ═══ VIDEO PLAYER SECTION ═══ */
+    .video-hero-section {
+      background: linear-gradient(135deg, #060a18 0%, var(--blue-dark) 40%, #0d1a3d 100%);
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden
+    }
+
+    .video-hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(33, 200, 242, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(33, 200, 242, .04) 1px, transparent 1px);
+      background-size: 60px 60px
+    }
+
+    .video-hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 48px;
+      align-items: center
+    }
+
+    .custom-player {
+      background: #000;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 0 0 2px rgba(33, 200, 242, .3), var(--shadow-xl);
+      position: relative;
+      animation: glowPulse 3s ease-in-out infinite
+    }
+
+    .custom-player__video-wrap {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: #000;
+      cursor: pointer
+    }
+
+    .custom-player video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover
+    }
+
+    .custom-player__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .3s ease;
+      z-index: 3
+    }
+
+    .custom-player__overlay.hidden {
+      opacity: 0;
+      pointer-events: none
+    }
+
+    .custom-player__big-play {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--sky));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(33, 200, 242, .5);
+      transform: scale(1);
+      transition: transform var(--transition-spring), box-shadow var(--transition);
+      cursor: pointer
+    }
+
+    .custom-player__big-play:hover {
+      transform: scale(1.12);
+      box-shadow: 0 0 60px rgba(33, 200, 242, .8)
+    }
+
+    .custom-player__big-play svg {
+      width: 32px;
+      height: 32px;
+      margin-left: 4px
+    }
+
+    .custom-player__thumbnail {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: opacity .4s ease
+    }
+
+    .custom-player__thumbnail-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(6, 10, 24, .7), rgba(24, 88, 227, .4))
+    }
+
+    .custom-player__thumbnail-play {
+      position: relative;
+      z-index: 2;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--sky));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 50px rgba(33, 200, 242, .6);
+      cursor: pointer;
+      transition: transform var(--transition-spring), box-shadow var(--transition)
+    }
+
+    .custom-player__thumbnail-play:hover {
+      transform: scale(1.12);
+      box-shadow: 0 0 80px rgba(33, 200, 242, .9)
+    }
+
+    .custom-player__thumbnail-play svg {
+      width: 36px;
+      height: 36px;
+      margin-left: 5px
+    }
+
+    .custom-player__controls {
+      background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, .9) 100%);
+      padding: 12px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .custom-player__progress-wrap {
+      position: relative;
+      height: 5px;
+      background: rgba(255, 255, 255, .2);
+      border-radius: 10px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: height .2s
+    }
+
+    .custom-player__progress-wrap:hover {
+      height: 8px
+    }
+
+    .custom-player__progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--sky));
+      border-radius: 10px;
+      width: 0%;
+      transition: width .1s linear;
+      position: relative
+    }
+
+    .custom-player__progress::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--sky);
+      opacity: 0;
+      transition: opacity .2s
+    }
+
+    .custom-player__progress-wrap:hover .custom-player__progress::after {
+      opacity: 1
+    }
+
+    .custom-player__progress-buffered {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, .15);
+      border-radius: 10px;
+      width: 0%
+    }
+
+    .custom-player__bottom {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .cp-btn {
+      color: rgba(255, 255, 255, .8);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--transition);
+      flex-shrink: 0
+    }
+
+    .cp-btn:hover {
+      color: var(--sky)
+    }
+
+    .cp-btn svg {
+      width: 20px;
+      height: 20px
+    }
+
+    .cp-volume {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto
+    }
+
+    .cp-volume input[type=range] {
+      -webkit-appearance: none;
+      width: 70px;
+      height: 4px;
+      background: rgba(255, 255, 255, .25);
+      border-radius: 4px;
+      cursor: pointer;
+      outline: none
+    }
+
+    .cp-volume input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--sky);
+      cursor: pointer
+    }
+
+    .cp-time {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      color: rgba(255, 255, 255, .7);
+      white-space: nowrap;
+      flex: 0 0 auto
+    }
+
+    .cp-spacer {
+      flex: 1
+    }
+
+    .cp-quality {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--sky);
+      background: rgba(33, 200, 242, .12);
+      border: 1px solid rgba(33, 200, 242, .3);
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition)
+    }
+
+    .cp-quality:hover {
+      background: rgba(33, 200, 242, .25)
+    }
+
+    .custom-player__chapters {
+      display: flex;
+      gap: 1px;
+      margin-top: 4px;
+      border-radius: 6px;
+      overflow: hidden
+    }
+
+    .cp-chapter {
+      flex: 1;
+      height: 3px;
+      background: rgba(255, 255, 255, .12);
+      cursor: pointer;
+      transition: background .2s
+    }
+
+    .cp-chapter:hover {
+      background: rgba(33, 200, 242, .5)
+    }
+
+    .cp-chapter.active {
+      background: var(--sky)
+    }
+
+    .video-info-panel {
+      color: var(--white)
+    }
+
+    .video-info-panel .section-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 16px;
+      display: block
+    }
+
+    .video-info-panel h2 {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 14px
+    }
+
+    .video-info-panel p {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      line-height: 1.72;
+      color: rgba(255, 255, 255, .65);
+      margin-bottom: 24px
+    }
+
+    .video-info-panel__stats {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 24px;
+      flex-wrap: wrap
+    }
+
+    .vip-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px
+    }
+
+    .vip-stat-num {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--sky)
+    }
+
+    .vip-stat-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: rgba(255, 255, 255, .45);
+      text-transform: uppercase;
+      letter-spacing: .06em
+    }
+
+    .video-info-panel__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .video-playlist {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .playlist-item {
+      display: flex;
+      gap: 12px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: var(--radius);
+      padding: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+      align-items: center
+    }
+
+    .playlist-item:hover {
+      background: rgba(33, 200, 242, .1);
+      border-color: var(--sky);
+      transform: translateX(4px)
+    }
+
+    .playlist-item.active {
+      background: rgba(33, 200, 242, .15);
+      border-color: var(--sky)
+    }
+
+    .playlist-item__thumb {
+      width: 80px;
+      aspect-ratio: 16/9;
+      background: var(--blue-dark);
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative
+    }
+
+    .playlist-item__thumb-bg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px
+    }
+
+    .playlist-item__play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, .4);
+      opacity: 0;
+      transition: .2s
+    }
+
+    .playlist-item:hover .playlist-item__play {
+      opacity: 1
+    }
+
+    .playlist-item__play svg {
+      width: 18px;
+      height: 18px
+    }
+
+    .playlist-item__info {
+      flex: 1;
+      min-width: 0
+    }
+
+    .playlist-item__title {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, .9);
+      line-height: 1.4;
+      display: -webkit-box;
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden
+    }
+
+    .playlist-item__meta {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: rgba(255, 255, 255, .4);
+      margin-top: 4px
+    }
+
+    .playlist-item__duration {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--sky);
+      background: rgba(33, 200, 242, .12);
+      padding: 2px 6px;
+      border-radius: 3px;
+      flex-shrink: 0
+    }
+
+    /* ═══ SECTION HEADERS ═══ */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--light-gray);
+      position: relative
+    }
+
+    .section-header::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--sky));
+      border-radius: 2px
+    }
+
+    .section-header__title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: .02em;
+      text-transform: uppercase
+    }
+
+    .section-header__link {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      transition: var(--transition)
+    }
+
+    .section-header__link:hover {
+      gap: 10px;
+      color: var(--sky)
+    }
+
+    .section-header__link svg {
+      width: 14px;
+      height: 14px
+    }
+
+    /* ═══ MAIN LAYOUT ═══ */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 40px;
+      padding: 56px 0
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 20px;
+      margin-bottom: 48px
+    }
+
+    .news-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md)
+    }
+
+    .news-card--featured {
+      grid-column: 1/-1;
+      display: grid;
+      grid-template-columns: 3fr 2fr
+    }
+
+    .news-card__img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9
+    }
+
+    .news-card--featured .news-card__img-wrap {
+      aspect-ratio: auto;
+      min-height: 240px
+    }
+
+    .news-card__img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 20, .75) 0%, transparent 60%)
+    }
+
+    .news-card__badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2
+    }
+
+    .news-card__body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1
+    }
+
+    .news-card--featured .news-card__body {
+      padding: 32px;
+      justify-content: center
+    }
+
+    .news-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--mid-gray);
+      flex-wrap: wrap
+    }
+
+    .news-card__meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--mid-gray);
+      flex-shrink: 0
+    }
+
+    .news-card__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--blue);
+      margin-bottom: 10px;
+      transition: color var(--transition)
+    }
+
+    .news-card:hover .news-card__title {
+      color: var(--sky-dark)
+    }
+
+    .news-card--featured .news-card__title {
+      font-size: 26px
+    }
+
+    .news-card--sm .news-card__title {
+      font-size: 16px
+    }
+
+    .news-card__excerpt {
+      font-size: 13.5px;
+      line-height: 1.72;
+      color: var(--dark-gray);
+      display: -webkit-box;
+      line-clamp: 3;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden
+    }
+
+    .news-card--featured .news-card__excerpt {
+      display: block;
+      line-clamp: unset;
+      -webkit-line-clamp: unset;
+      overflow: visible;
+    }
+
+    .news-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--light-gray)
+    }
+
+    .news-card__author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark-gray)
+    }
+
+    .news-card__author-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0
+    }
+
+    .news-card__read-more {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      transition: gap var(--transition), color var(--transition)
+    }
+
+    .news-card:hover .news-card__read-more {
+      gap: 8px;
+      color: var(--sky-dark)
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 48px
+    }
+
+    /* ═══ VIDEO SECTION ═══ */
+    .video-section {
+      margin-bottom: 56px
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 20px;
+      align-items: start
+    }
+
+    .video-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md)
+    }
+
+    .video-card__thumb {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: var(--charcoal)
+    }
+
+    .video-card__thumb-bg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .video-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition)
+    }
+
+    .video-card:hover .video-card__overlay {
+      opacity: 1
+    }
+
+    .video-card__play-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--sky));
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sky);
+      transform: scale(.8);
+      transition: transform var(--transition-spring)
+    }
+
+    .video-card:hover .video-card__play-btn {
+      transform: scale(1)
+    }
+
+    .video-card__play-btn svg {
+      width: 22px;
+      height: 22px;
+      margin-left: 3px
+    }
+
+    .video-card__duration {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      background: rgba(0, 0, 0, .82);
+      color: var(--white);
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px
+    }
+
+    .video-card__body {
+      padding: 16px
+    }
+
+    .video-card__title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--blue);
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 8px;
+      transition: color var(--transition)
+    }
+
+    .video-card:hover .video-card__title {
+      color: var(--sky-dark)
+    }
+
+    .video-card__meta {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--mid-gray);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .video-card--featured .video-card__body {
+      padding: 20px
+    }
+
+    .video-card--featured .video-card__title {
+      font-size: 20px;
+      -webkit-line-clamp: 3
+    }
+
+    .yt-channel-embed {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 28px;
+      border: 2px solid rgba(33, 200, 242, .2)
+    }
+
+    .yt-channel-embed iframe {
+      width: 100%;
+      display: block
+    }
+
+    /* ═══ SIDEBAR ═══ */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 28px
+    }
+
+    .host-card {
+      background: linear-gradient(160deg, var(--blue-dark) 0%, var(--blue) 60%, #1a40b0 100%);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md)
+    }
+
+    .host-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 40px solid rgba(33, 200, 242, .08)
+    }
+
+    .host-card::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 25px solid rgba(206, 17, 38, .12)
+    }
+
+    .host-card__photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid var(--sky);
+      overflow: hidden;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+      background: var(--blue-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      position: relative;
+      z-index: 1
+    }
+
+    .host-card__name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 1
+    }
+
+    .host-card__role {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: rgba(255, 255, 255, .55);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1
+    }
+
+    .host-card__bio {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, .68);
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1
+    }
+
+    .host-card__social {
+      display: flex;
+      gap: 8px;
+      position: relative;
+      z-index: 1
+    }
+
+    .host-card__social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 15px;
+      transition: var(--transition)
+    }
+
+    .host-card__social a:hover {
+      background: var(--sky);
+      transform: translateY(-3px);
+      color: var(--charcoal)
+    }
+
+    .subscribe-box {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--light-gray)
+    }
+
+    .subscribe-box__title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 8px;
+      text-transform: uppercase
+    }
+
+    .subscribe-box__desc {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: var(--dark-gray);
+      line-height: 1.6;
+      margin-bottom: 16px
+    }
+
+    .subscribe-box__input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--light-gray);
+      border-radius: var(--radius);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      margin-bottom: 10px;
+      outline: none;
+      transition: border-color var(--transition);
+      color: var(--charcoal)
+    }
+
+    .subscribe-box__input:focus {
+      border-color: var(--sky);
+      box-shadow: 0 0 0 3px rgba(33, 200, 242, .15)
+    }
+
+    .subscribe-box__btn {
+      width: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--sky));
+      color: var(--white);
+      padding: 12px;
+      border-radius: var(--radius);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: var(--transition)
+    }
+
+    .subscribe-box__btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sky)
+    }
+
+    .trending-widget {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--light-gray)
+    }
+
+    .trending-widget__title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .trending-widget__title::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(to bottom, var(--blue), var(--sky));
+      border-radius: 2px;
+      flex-shrink: 0
+    }
+
+    .trending-item {
+      display: flex;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--light-gray);
+      cursor: pointer;
+      transition: padding-left var(--transition)
+    }
+
+    .trending-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0
+    }
+
+    .trending-item:hover {
+      padding-left: 8px
+    }
+
+    .trending-item__num {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--red);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+      transition: color var(--transition)
+    }
+
+    .trending-item:hover .trending-item__num {
+      color: var(--red-light)
+    }
+
+    .trending-item__title {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden
+    }
+
+    .trending-item__meta {
+      font-size: 11px;
+      color: var(--mid-gray);
+      margin-top: 5px;
+      font-family: var(--font-ui)
+    }
+
+    .social-widget {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--light-gray)
+    }
+
+    .social-widget__title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 16px;
+      text-transform: uppercase
+    }
+
+    .social-count-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+      transition: var(--transition);
+      cursor: pointer;
+      text-decoration: none
+    }
+
+    .social-count-item:last-child {
+      margin-bottom: 0
+    }
+
+    .social-count-item--yt {
+      background: #ff000010
+    }
+
+    .social-count-item--yt:hover {
+      background: #ff000020;
+      transform: translateX(4px)
+    }
+
+    .social-count-item--ig {
+      background: #e4405f10
+    }
+
+    .social-count-item--ig:hover {
+      background: #e4405f20;
+      transform: translateX(4px)
+    }
+
+    .social-count-item--fb {
+      background: #1858e310
+    }
+
+    .social-count-item--fb:hover {
+      background: #1858e320;
+      transform: translateX(4px)
+    }
+
+    .social-count-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0
+    }
+
+    .social-count-icon--yt {
+      background: #ff0000;
+      color: #fff
+    }
+
+    .social-count-icon--ig {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: #fff
+    }
+
+    .social-count-icon--fb {
+      background: var(--blue);
+      color: #fff
+    }
+
+    .social-count-info {
+      flex: 1
+    }
+
+    .social-count-num {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1
+    }
+
+    .social-count-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--mid-gray);
+      text-transform: uppercase;
+      letter-spacing: .06em
+    }
+
+    .social-count-action {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: var(--radius);
+      text-transform: uppercase;
+      letter-spacing: .05em
+    }
+
+    .social-count-item--yt .social-count-action {
+      background: #ff0000;
+      color: #fff
+    }
+
+    .social-count-item--ig .social-count-action {
+      background: #e4405f;
+      color: #fff
+    }
+
+    .social-count-item--fb .social-count-action {
+      background: var(--blue);
+      color: #fff
+    }
+
+    /* ═══ CATEGORIES ═══ */
+    .categories-band {
+      background: linear-gradient(90deg, var(--blue-dark) 0%, var(--blue) 50%, var(--blue-mid) 100%);
+      padding: 36px 0;
+      overflow: hidden;
+    }
+
+    .categories-marquee {
+      display: flex;
+    }
+
+    .categories-marquee:hover .categories-grid {
+      animation-play-state: paused;
+    }
+
+    .categories-grid {
+      display: flex;
+      gap: 16px;
+      padding-right: 16px;
+      flex-shrink: 0;
+      animation: marquee-scroll 20s linear infinite;
+    }
+
+    @keyframes marquee-scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    .category-card {
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: var(--radius-lg);
+      padding: 20px 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+      min-width: 180px;
+      flex-shrink: 0;
+    }
+
+    .category-card:hover {
+      background: linear-gradient(135deg, var(--blue-light), var(--sky));
+      border-color: var(--sky);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-sky)
+    }
+
+    .category-card__icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: block;
+      transition: transform var(--transition-spring)
+    }
+
+    .category-card:hover .category-card__icon {
+      transform: scale(1.2) rotate(-5deg)
+    }
+
+    .category-card__name {
+      font-family: var(--font-ui);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .08em;
+      text-transform: uppercase
+    }
+
+    /* ═══ BLOG ═══ */
+    .blog-section {
+      padding: 64px 0;
+      background: var(--white)
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px
+    }
+
+    .blog-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--light-gray);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: pointer;
+      background: var(--white)
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent
+    }
+
+    .blog-card__img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative
+    }
+
+    .blog-card__img-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px
+    }
+
+    .blog-card__body {
+      padding: 24px
+    }
+
+    .blog-card__tag {
+      margin-bottom: 12px
+    }
+
+    .blog-card__title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--blue);
+      line-height: 1.3;
+      margin-bottom: 12px;
+      transition: color var(--transition)
+    }
+
+    .blog-card:hover .blog-card__title {
+      color: var(--sky-dark)
+    }
+
+    .blog-card__excerpt {
+      font-size: 13.5px;
+      line-height: 1.72;
+      color: var(--dark-gray);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 20px
+    }
+
+    .blog-card__footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--light-gray);
+      font-family: var(--font-ui);
+      font-size: 12px;
+      color: var(--mid-gray)
+    }
+
+    .blog-card__avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0
+    }
+
+    /* ═══ INTERVIEW ═══ */
+    .interview-section {
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--blue-dark) 50%, var(--blue) 100%);
+      padding: 64px 0;
+      position: relative;
+      overflow: hidden
+    }
+
+    .interview-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(33, 200, 242, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(33, 200, 242, .03) 1px, transparent 1px);
+      background-size: 40px 40px
+    }
+
+    .interview-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center
+    }
+
+    .interview-content {
+      color: var(--white)
+    }
+
+    .interview-content .section-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 16px;
+      display: block
+    }
+
+    .interview-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 38px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--white)
+    }
+
+    .interview-content p {
+      font-size: 15px;
+      line-height: 1.82;
+      color: rgba(255, 255, 255, .68);
+      margin-bottom: 28px
+    }
+
+    .interview-img {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl), 0 0 60px rgba(33, 200, 242, .2);
+      position: relative
+    }
+
+    .interview-img img {
+      width: 100%;
+      height: auto;
+      display: block
+    }
+
+    .interview-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(33, 200, 242, .2);
+      border-radius: var(--radius-xl);
+      pointer-events: none
+    }
+
+    /* ═══ LIVE TV ═══ */
+    .live-section {
+      padding: 64px 0;
+      background: var(--off-white)
+    }
+
+    .live-player {
+      background: var(--charcoal);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl)
+    }
+
+    .live-player__header {
+      padding: 16px 24px;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .live-player__title {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: .06em
+    }
+
+    .live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: .08em
+    }
+
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--red);
+      animation: pulseDot 1.5s ease infinite;
+      flex-shrink: 0
+    }
+
+    .live-player__frame {
+      aspect-ratio: 16/9;
+      width: 100%
+    }
+
+    .live-player__frame iframe {
+      width: 100%;
+      height: 100%;
+      display: block
+    }
+
+    /* ═══ FOOTER ═══ */
+    .footer {
+      background: var(--black);
+      color: rgba(255, 255, 255, .55);
+      padding: 64px 0 0
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .footer__brand-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px
+    }
+
+    .footer__brand-sub {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--sky);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 16px
+    }
+
+    .footer__brand-desc {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      line-height: 1.72;
+      margin-bottom: 24px;
+      color: rgba(255, 255, 255, .45)
+    }
+
+    .footer__social {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .footer__social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .55);
+      font-size: 16px;
+      transition: var(--transition)
+    }
+
+    .footer__social a:hover {
+      background: var(--blue);
+      border-color: var(--sky);
+      color: var(--white);
+      transform: translateY(-3px)
+    }
+
+    .footer__col-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--sky);
+      display: inline-block
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer__links a {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: rgba(255, 255, 255, .45);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .footer__links a::before {
+      content: '›';
+      color: var(--sky);
+      font-size: 16px
+    }
+
+    .footer__links a:hover {
+      color: var(--white);
+      padding-left: 4px
+    }
+
+    .footer__bottom {
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-ui);
+      font-size: 12px;
+      color: rgba(255, 255, 255, .55);
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .footer__bottom a {
+      color: var(--sky)
+    }
+
+    .flag-stripe {
+      display: flex;
+      height: 6px
+    }
+
+    .flag-stripe span {
+      flex: 1
+    }
+
+    .flag-stripe span:nth-child(1) {
+      background: var(--blue)
+    }
+
+    .flag-stripe span:nth-child(2) {
+      background: var(--sky)
+    }
+
+    .flag-stripe span:nth-child(3) {
+      background: var(--red)
+    }
+
+    .flag-stripe span:nth-child(4) {
+      background: var(--sky)
+    }
+
+    .flag-stripe span:nth-child(5) {
+      background: var(--blue)
+    }
+
+    .back-top-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 500;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--sky));
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-blue);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity var(--transition), transform var(--transition);
+      cursor: pointer
+    }
+
+    .back-top-btn.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0)
+    }
+
+    .back-top-btn:hover {
+      transform: translateY(-4px) scale(1.08)
+    }
+
+    .back-top-btn svg {
+      width: 20px;
+      height: 20px
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .75s var(--ease-out-expo), transform .75s var(--ease-out-expo)
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .1s
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .2s
+    }
+
+    .reveal-delay-3 {
+      transition-delay: .3s
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, var(--light-gray) 25%, #e8eaf0 50%, var(--light-gray) 75%);
+      background-size: 468px 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: var(--radius)
+    }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media(max-width:1100px) {
+      .main-layout {
+        grid-template-columns: 1fr
+      }
+
+      .sidebar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .video-card--featured {
+        grid-column: 1/-1
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px
+      }
+
+      .categories-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .video-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 32px
+      }
+    }
+
+    @media(max-width:900px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 40px 0
+      }
+
+      .hero__media {
+        display: none
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr
+      }
+
+      .news-card--featured {
+        grid-template-columns: 1fr
+      }
+
+      .news-card--featured .news-card__img-wrap {
+        aspect-ratio: 16/9
+      }
+
+      .interview-inner {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .sidebar {
+        grid-template-columns: 1fr
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media(max-width:768px) {
+
+      .navbar__nav,
+      .navbar__search {
+        display: none
+      }
+
+      .navbar__hamburger {
+        display: flex
+      }
+
+      .mobile-menu,
+      .mobile-menu__overlay {
+        display: block
+      }
+
+      .mobile-menu {
+        display: flex
+      }
+
+      .topbar {
+        display: none
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr
+      }
+
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 32px
+      }
+
+      .hero__title {
+        font-size: 30px
+      }
+
+      .hero__inner {
+        padding: 36px 0
+      }
+
+      .main-layout {
+        padding: 36px 0;
+        gap: 32px
+      }
+
+      .cp-volume {
+        display: none
+      }
+    }
+
+    @media(max-width:580px) {
+      .container {
+        padding: 0 16px
+      }
+
+      .hero__actions {
+        flex-direction: column
+      }
+
+      .hero__stats {
+        gap: 18px
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr
+      }
+
+      .featured-grid {
+        gap: 14px
+      }
+
+      .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px
+      }
+
+      .category-card {
+        padding: 14px 8px
+      }
+
+      .category-card__icon {
+        font-size: 22px
+      }
+
+      .category-card__name {
+        font-size: 10px
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr
+      }
+
+      .footer__bottom {
+        flex-direction: column;
+        text-align: center
+      }
+
+      .back-top-btn {
+        bottom: 20px;
+        right: 16px
+      }
+
+      .section-header__title {
+        font-size: 16px
+      }
+    }
+
+    @media(max-width:400px) {
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media print {
+
+      .preloader,
+      .navbar__hamburger,
+      .mobile-menu,
+      .back-top-btn,
+      .breaking-bar,
+      .yt-channel-embed,
+      .live-player,
+      #bb-intro {
+        display: none !important
+      }
+    }
+
+    @keyframes ncKB {
+      0% {
+        transform: scale(1.06);
+      }
+
+      100% {
+        transform: scale(1.18);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════════════════════
+     ★★★ 3D INTRO OVERLAY — BATALLANDO TV ★★★
+════════════════════════════════════════════════════════ -->
+  <div id="bb-intro" role="dialog" aria-modal="true" aria-label="Intro Batallando TV">
+
+    <!-- Loader -->
+    <div class="bb-ldr" id="bb-ldr">
+      <div class="bb-lring"></div>
+    </div>
+
+    <!-- Video background -->
+    <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
+      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+    </video>
+
+    <!-- FX layers -->
+    <div class="bb-vig" aria-hidden="true"></div>
+    <div class="bb-cg" aria-hidden="true"></div>
+    <div class="bb-sl" aria-hidden="true"></div>
+    <div id="bb-beam" aria-hidden="true"></div>
+
+    <!-- Three.js canvas -->
+    <canvas id="bb-canvas" aria-hidden="true"></canvas>
+
+    <!-- Rings -->
+    <div class="bb-rings" aria-hidden="true">
+      <div class="bb-ring"></div>
+      <div class="bb-ring"></div>
+      <div class="bb-ring"></div>
+    </div>
+
+    <!-- Center stage -->
+    <div class="bb-stage">
+      <!-- 3D Cube -->
+      <div class="bb-cube-wrap" aria-label="Logo Batallando 3D">
+        <div class="bb-face bb-face-f" style="display:flex;align-items:center;justify-content:center;">
+          <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Logo"
+            style="width:85%;height:85%;object-fit:contain;transform:scale(1.2);">
+        </div>
+        <div class="bb-face bb-face-bk">🇩🇴</div>
+        <div class="bb-face bb-face-r">▶</div>
+        <div class="bb-face bb-face-l">📺</div>
+        <div class="bb-face bb-face-t">★</div>
+        <div class="bb-face bb-face-bo" style="font-size:28px;letter-spacing:.1em">RD</div>
+      </div>
+
+      <!-- Brand -->
+      <div class="bb-brand" id="bb-brand">
+        <div class="bb-title">BATALLANDO</div>
+        <div class="bb-tsub">Noticias &nbsp;·&nbsp; Política &nbsp;·&nbsp; República Dominicana</div>
+        <div class="bb-div" id="bb-div"></div>
+        <div class="bb-con">con</div>
+        <div class="bb-host">Dionisio Santana</div>
+      </div>
+
+      <!-- CTA -->
+      <div class="bb-cta" id="bb-cta">
+        <button class="bb-btn" id="bb-entrar" onclick="bbEnter()" type="button" aria-label="Entrar al sitio">
+          <svg class="bb-bico" viewBox="0 0 24 24" aria-hidden="true">
+            <polygon points="5,3 19,12 5,21" />
+          </svg>
+          BIENVENIDO &mdash; ENTRAR
+        </button>
+        <div class="bb-hint">Presiona ENTER o ESPACIO para continuar</div>
+      </div>
+    </div>
+
+    <!-- Skip -->
+    <button class="bb-skip" onclick="bbEnter()" type="button" aria-label="Saltar intro">SALTAR ›</button>
+
+    <!-- Flag bottom -->
+    <div class="bb-flag-bot" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+  <!-- ════════ FIN INTRO ════════ -->
+
+  <!-- ═══ PRELOADER ═══ -->
+  <div class="preloader no-select" data-preaload aria-hidden="true">
+    <div class="preloader__logo-wrap" style="flex-direction: column; gap: 16px;">
+      <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
+        style="height: 70px; width: auto; object-fit: contain; max-width: 90vw;">
+    </div>
+    <div class="preloader__bar-wrap">
+      <div class="preloader__bar-fill"></div>
+    </div>
+    <div class="preloader__flag">
+      <div class="preloader__flag-dot"></div>
+      <div class="preloader__flag-dot"></div>
+      <div class="preloader__flag-dot"></div>
+    </div>
+  </div>
+
+  <!-- ═══ TOAST ═══ -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+  <div class="mobile-menu__overlay" id="menu-overlay" aria-hidden="true"></div>
+
+  <!-- ═══ BREAKING NEWS ═══ -->
+  <div class="breaking-bar" role="marquee" aria-label="Últimas noticias">
+    <div class="breaking-bar__label"><span class="blink-dot" aria-hidden="true"></span> ÚLTIMA HORA</div>
+    <div class="breaking-bar__track">
+      <div class="breaking-bar__ticker" id="ticker">
+        <div class="breaking-bar__item"><span>●</span> Dionisio Santana analiza los principales temas políticos de
+          República Dominicana esta semana</div>
+        <div class="breaking-bar__item"><span>●</span> Batallando TV: El programa de noticias y análisis más visto de RD
+        </div>
+        <div class="breaking-bar__item"><span>●</span> Nueva entrevista exclusiva disponible en el canal de YouTube — No
+          te la pierdas</div>
+        <div class="breaking-bar__item"><span>●</span> Suscríbete al canal @BATALLANDOCONDIONISIOSANTANA para no
+          perderte ningún episodio</div>
+        <div class="breaking-bar__item"><span>●</span> Batallando: Donde la política se debate sin filtros desde Santo
+          Domingo, RD 🇩🇴</div>
+        <div class="breaking-bar__item"><span>●</span> Más de 85,000 suscriptores confían en Batallando para informarse
+          cada semana</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ TOPBAR ═══ -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar__inner">
+        <div class="topbar__left">
+          <span class="topbar__date" id="current-date">Domingo, 3 de Mayo de 2026</span>
+          <span style="color:#000!important; font-weight: bold;">📍 Santo Domingo, República Dominicana</span>
+        </div>
+        <div class="topbar__right">
+          <div class="topbar__social">
+            <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA" target="_blank" rel="noopener noreferrer"
+              title="YouTube" aria-label="YouTube">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+            <a href="#" title="Facebook" aria-label="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            <a href="#" title="Instagram" aria-label="Instagram"><img src="images/instagram.png" alt="Instagram"
+                width="14" height="14" style="filter:invert(1)"></a>
+          </div>
+          <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/live" target="_blank" rel="noopener noreferrer"
+            class="live-badge" aria-label="Ver en vivo">
+            <span class="blink-dot" aria-hidden="true"></span> EN VIVO
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ HEADER / NAVBAR ═══ -->
+  <div class="header" data-header>
+    <nav class="navbar" data-navbar aria-label="Navegación principal">
+      <div class="container">
+        <div class="navbar__inner">
+          <a href="#" class="navbar__logo" aria-label="Batallando — Inicio">
+            <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
+              style="height: 44px; width: auto; object-fit: contain; max-width: 220px;">
+          </a>
+          <div class="navbar__nav">
+            <a href="#" class="active" data-nav-link>Inicio</a>
+            <a href="#noticias" data-nav-link>Noticias</a>
+            <a href="#video-player" data-nav-link>▶ Video</a>
+            <a href="#blog" data-nav-link>Blog</a>
+            <a href="#entrevistas" data-nav-link>Entrevistas</a>
+            <a href="#sobre-dionisio" data-nav-link>Sobre Dionisio</a>
+            <a href="assets/Formulario/Formulario.html">Contacto</a>
+          </div>
+          <div class="navbar__actions">
+            <div class="navbar__search" role="search">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+              <input type="search" placeholder="Buscar noticias…" aria-label="Buscar noticias" id="search-input"
+                autocomplete="off" />
+            </div>
+            <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA?sub_confirmation=1" target="_blank"
+              rel="noopener noreferrer" class="btn btn--red" style="padding:10px 16px;font-size:12px;"
+              aria-label="Suscribirse en YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+              Suscribirse
+            </a>
+          </div>
+          <button class="navbar__hamburger" id="hamburger" data-nav-toggler aria-label="Abrir menú"
+            aria-expanded="false" aria-controls="mobile-menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menú móvil" aria-modal="true">
+    <button class="mobile-menu__close" id="menu-close" data-nav-toggler aria-label="Cerrar menú">✕</button>
+    <a href="#" data-nav-link>Inicio</a>
+    <a href="#noticias" data-nav-link>Noticias</a>
+    <a href="#video-player" data-nav-link>▶ Video</a>
+    <a href="#blog" data-nav-link>Blog</a>
+    <a href="#entrevistas" data-nav-link>Entrevistas</a>
+    <a href="#sobre-dionisio" data-nav-link>Sobre Dionisio</a>
+    <a href="assets/Formulario/Formulario.html">Contacto</a>
+    <div class="mobile-menu__social">
+      <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA" target="_blank" rel="noopener noreferrer"
+        title="YouTube" aria-label="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg>
+      </a>
+      <a href="#" title="Facebook" aria-label="Facebook">📘</a>
+      <a href="#" title="Instagram" aria-label="Instagram">📸</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" aria-label="Sección principal">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__grid-pattern" aria-hidden="true"></div>
+    <div class="hero__scanline" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <div class="hero__overline animate-fade-up">
+            <div class="hero__overline-line" aria-hidden="true"></div>
+            <span class="hero__overline-text">🇩🇴 República Dominicana · Noticias y Análisis</span>
+          </div>
+          <h1 class="hero__title animate-fade-up delay-1">La Verdad<br>Sin <em>Filtros</em><br>con Dionisio Santana</h1>
+          <p class="hero__desc animate-fade-up delay-2">El programa líder de análisis político y noticias de República
+            Dominicana, debates, entrevistas exclusivas y cobertura en tiempo real de los temas que más importan.</p>
+          <div class="hero__actions animate-fade-up delay-3">
+            <a href="#video-player" class="btn btn--sky"><svg viewBox="0 0 24 24" fill="currentColor" width="18"
+                height="18" aria-hidden="true">
+                <polygon points="5,3 19,12 5,21" />
+              </svg>Ver Video Ahora</a>
+            <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA?sub_confirmation=1" target="_blank"
+              rel="noopener noreferrer" class="btn btn--outline"><svg viewBox="0 0 24 24" fill="currentColor" width="18"
+                height="18" aria-hidden="true">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>Suscribirse en YouTube</a>
+          </div>
+          <div class="hero__stats animate-fade-up delay-4">
+            <div class="hero__stat">
+              <div class="hero__stat-number" id="stat-subs">85K+</div>
+              <div class="hero__stat-label">Suscriptores</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number" id="stat-videos">500+</div>
+              <div class="hero__stat-label">Videos</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number" id="stat-views">10M+</div>
+              <div class="hero__stat-label">Vistas Totales</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number">5+</div>
+              <div class="hero__stat-label">Años en Aire</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__media animate-fade-up delay-2" aria-hidden="true">
+          <div class="hero__video-main">
+            <div class="hero__video-badge"><span class="tag tag--live">▶ ÚLTIMO EPISODIO</span></div>
+            <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
+              rel="noopener noreferrer" aria-label="Ver en YouTube" style="display:block;width:100%;height:100%;">
+              <img src="/assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
+                alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" decoding="async"
+                style="width:100%; height:100%; object-fit:cover; display:block;">
+              <div
+                style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);pointer-events:none;">
+              </div>
+              <div style="position:absolute;bottom:14px;right:14px;z-index:5;">
+                <span
+                  style="display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);color:#fff;font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:.06em;padding:6px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.15);">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                  VER EN YOUTUBE
+                </span>
+              </div>
+            </a>
+          </div>
+          <div class="hero__mini-grid">
+            <a class="hero__mini-card" href="#video-player" aria-label="Ver análisis político">
+              <div class="hero__mini-thumb">
+                <div
+                  style="width:100%;height:100%;background:linear-gradient(135deg,#1858e3,#21c8f2);display:flex;align-items:center;justify-content:center;">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)">
+                    <path
+                      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </div>
+                <div class="hero__mini-play"><svg width="28" height="28" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="12" fill="rgba(33,200,242,0.85)" />
+                    <polygon points="10,8 17,12 10,16" fill="white" />
+                  </svg></div>
+              </div>
+              <div class="hero__mini-info">
+                <div class="hero__mini-title">Análisis Político Semanal</div>
+                <div class="hero__mini-meta">Batallando TV</div>
+              </div>
+            </a>
+            <a class="hero__mini-card" href="#videos" aria-label="Ver entrevistas exclusivas">
+              <div class="hero__mini-thumb">
+                <div
+                  style="width:100%;height:100%;background:linear-gradient(135deg,#26489d,#9e0d1e);display:flex;align-items:center;justify-content:center;font-size:28px;">
+                  🎙️</div>
+                <div class="hero__mini-play"><svg width="28" height="28" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="12" fill="rgba(206,17,38,0.85)" />
+                    <polygon points="10,8 17,12 10,16" fill="white" />
+                  </svg></div>
+              </div>
+              <div class="hero__mini-info">
+                <div class="hero__mini-title">Entrevistas Exclusivas</div>
+                <div class="hero__mini-meta">Batallando TV</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATEGORIES ═══ -->
+  <section class="categories-band" aria-label="Categorías">
+    <div class="categories-marquee">
+      <div class="categories-grid">
+        <div class="category-card" onclick="filterNews('politica')" role="button" tabindex="0" aria-label="Política">
+          <span class="category-card__icon" aria-hidden="true">🏛️</span>
+          <div class="category-card__name">Política</div>
+        </div>
+        <div class="category-card" onclick="filterNews('economia')" role="button" tabindex="0" aria-label="Economía">
+          <span class="category-card__icon" aria-hidden="true">📊</span>
+          <div class="category-card__name">Economía</div>
+        </div>
+        <div class="category-card" onclick="filterNews('sociedad')" role="button" tabindex="0" aria-label="Sociedad">
+          <span class="category-card__icon" aria-hidden="true">🤝</span>
+          <div class="category-card__name">Sociedad</div>
+        </div>
+        <div class="category-card" onclick="filterNews('internacional')" role="button" tabindex="0"
+          aria-label="Internacional">
+          <span class="category-card__icon" aria-hidden="true">🌎</span>
+          <div class="category-card__name">Internacional</div>
+        </div>
+        <div class="category-card" onclick="filterNews('deportes')" role="button" tabindex="0" aria-label="Deportes">
+          <span class="category-card__icon" aria-hidden="true">⚾</span>
+          <div class="category-card__name">Deportes</div>
+        </div>
+        <div class="category-card" onclick="filterNews('cultura')" role="button" tabindex="0" aria-label="Cultura">
+          <span class="category-card__icon" aria-hidden="true">🎭</span>
+          <div class="category-card__name">Cultura</div>
+        </div>
+      </div>
+      <div class="categories-grid" aria-hidden="true">
+        <div class="category-card" onclick="filterNews('politica')" role="button" tabindex="-1">
+          <span class="category-card__icon">🏛️</span>
+          <div class="category-card__name">Política</div>
+        </div>
+        <div class="category-card" onclick="filterNews('economia')" role="button" tabindex="-1">
+          <span class="category-card__icon">📊</span>
+          <div class="category-card__name">Economía</div>
+        </div>
+        <div class="category-card" onclick="filterNews('sociedad')" role="button" tabindex="-1">
+          <span class="category-card__icon">🤝</span>
+          <div class="category-card__name">Sociedad</div>
+        </div>
+        <div class="category-card" onclick="filterNews('internacional')" role="button" tabindex="-1">
+          <span class="category-card__icon">🌎</span>
+          <div class="category-card__name">Internacional</div>
+        </div>
+        <div class="category-card" onclick="filterNews('deportes')" role="button" tabindex="-1">
+          <span class="category-card__icon">⚾</span>
+          <div class="category-card__name">Deportes</div>
+        </div>
+        <div class="category-card" onclick="filterNews('cultura')" role="button" tabindex="-1">
+          <span class="category-card__icon">🎭</span>
+          <div class="category-card__name">Cultura</div>
+        </div>
+      </div>
+      <div class="categories-grid" aria-hidden="true">
+        <div class="category-card" onclick="filterNews('politica')" role="button" tabindex="-1">
+          <span class="category-card__icon">🏛️</span>
+          <div class="category-card__name">Política</div>
+        </div>
+        <div class="category-card" onclick="filterNews('economia')" role="button" tabindex="-1">
+          <span class="category-card__icon">📊</span>
+          <div class="category-card__name">Economía</div>
+        </div>
+        <div class="category-card" onclick="filterNews('sociedad')" role="button" tabindex="-1">
+          <span class="category-card__icon">🤝</span>
+          <div class="category-card__name">Sociedad</div>
+        </div>
+        <div class="category-card" onclick="filterNews('internacional')" role="button" tabindex="-1">
+          <span class="category-card__icon">🌎</span>
+          <div class="category-card__name">Internacional</div>
+        </div>
+        <div class="category-card" onclick="filterNews('deportes')" role="button" tabindex="-1">
+          <span class="category-card__icon">⚾</span>
+          <div class="category-card__name">Deportes</div>
+        </div>
+        <div class="category-card" onclick="filterNews('cultura')" role="button" tabindex="-1">
+          <span class="category-card__icon">🎭</span>
+          <div class="category-card__name">Cultura</div>
+        </div>
+      </div>
+      <div class="categories-grid" aria-hidden="true">
+        <div class="category-card" onclick="filterNews('politica')" role="button" tabindex="-1">
+          <span class="category-card__icon">🏛️</span>
+          <div class="category-card__name">Política</div>
+        </div>
+        <div class="category-card" onclick="filterNews('economia')" role="button" tabindex="-1">
+          <span class="category-card__icon">📊</span>
+          <div class="category-card__name">Economía</div>
+        </div>
+        <div class="category-card" onclick="filterNews('sociedad')" role="button" tabindex="-1">
+          <span class="category-card__icon">🤝</span>
+          <div class="category-card__name">Sociedad</div>
+        </div>
+        <div class="category-card" onclick="filterNews('internacional')" role="button" tabindex="-1">
+          <span class="category-card__icon">🌎</span>
+          <div class="category-card__name">Internacional</div>
+        </div>
+        <div class="category-card" onclick="filterNews('deportes')" role="button" tabindex="-1">
+          <span class="category-card__icon">⚾</span>
+          <div class="category-card__name">Deportes</div>
+        </div>
+        <div class="category-card" onclick="filterNews('cultura')" role="button" tabindex="-1">
+          <span class="category-card__icon">🎭</span>
+          <div class="category-card__name">Cultura</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VIDEO PLAYER ═══ -->
+  <section id="video-player" class="video-hero-section" aria-label="Reproductor de video interactivo">
+    <div class="container">
+      <div class="section-header reveal" style="border-color:rgba(33,200,242,.3);">
+        <h2 class="section-header__title" style="color:whitesmoke;">▶ Reproductor Interactivo</h2>
+        <span class="tag tag--sky" style="font-size:11px;">🎬 NUEVO EPISODIO</span>
+      </div>
+      <div class="video-hero-inner">
+        <div>
+          <div class="custom-player" id="customPlayer" style="pointer-events: none;">
+            <div class="custom-player__video-wrap" id="playerWrap">
+              <video id="mainVideo" preload="auto" autoplay muted loop playsinline
+                style="width:100%;height:100%;display:block;object-fit:cover;"
+                aria-label="Video de Batallando con Dionisio Santana">
+                <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div style="margin-top:12px;text-align:center;">
+            <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
+              rel="noopener noreferrer" class="btn btn--red"
+              style="font-size:12px;padding:10px 20px;display:inline-flex;"><svg viewBox="0 0 24 24" fill="currentColor"
+                width="16" height="16">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>Ver en YouTube</a>
+          </div>
+        </div>
+        <div>
+          <div class="video-info-panel reveal">
+            <span class="section-label">Último Episodio</span>
+            <h2>Batallando con<br>Dionisio Santana</h2>
+            <p style="color: whitesmoke;">Análisis político profundo sin filtros, los temas que definen el futuro de
+              República Dominicana,
+              debatidos con honestidad y rigor periodístico.</p>
+            <div class="video-info-panel__stats">
+              <div class="vip-stat"><span class="vip-stat-num">85K+</span><span
+                  class="vip-stat-label">Suscriptores</span></div>
+              <div class="vip-stat"><span class="vip-stat-num">500+</span><span class="vip-stat-label">Episodios</span>
+              </div>
+              <div class="vip-stat"><span class="vip-stat-num">10M+</span><span class="vip-stat-label">Vistas</span>
+              </div>
+            </div>
+            <div class="video-info-panel__actions">
+              <button class="btn btn--sky" style="font-size:12px;padding:10px 16px;" onclick="handleShare()"><svg
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                </svg>Compartir</button>
+              <button class="btn btn--blue" style="font-size:12px;padding:10px 16px;" onclick="handleLike()"><svg
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z" />
+                  <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+                </svg>Me gusta</button>
+            </div>
+          </div>
+          <div style="margin-top:20px;">
+            <div
+              style="font-family:var(--font-ui);font-size:11px;font-weight:700;color:var(--sky);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;">
+              📋 EN ESTA SERIE</div>
+            <div class="video-playlist" id="videoPlaylist"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NOTICIAS ═══ -->
+  <section id="noticias" aria-label="Noticias">
+    <div class="container">
+      <div class="main-layout">
+        <main>
+          <div class="section-header reveal">
+            <h2 class="section-header__title">🔥 Noticias Destacadas</h2>
+            <a href="#" class="section-header__link" aria-label="Ver todas">Ver todas <svg viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg></a>
+          </div>
+          <div class="featured-grid reveal">
+            <article class="news-card news-card--featured" tabindex="0" role="article">
+              <div class="news-card__img-wrap" style="background:#000;">
+                <video autoplay muted playsinline loop
+                  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
+                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                </video>
+                <img src="assets/Batallando/Batallando-wiski.png" class="nc-img" alt="Batallando TV"
+                  style="position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block;min-height:260px;transform-origin:bottom;" />
+                <div class="news-card__img-overlay" aria-hidden="true" style="z-index:2;"></div>
+                <div class="news-card__badge" style="z-index:3;"><span class="tag tag--red">EXCLUSIVO</span></div>
+              </div>
+              <div class="news-card__body">
+                <div class="news-card__meta"><span class="tag tag--outline"
+                    style="font-size:10px;padding:2px 8px;">Política</span><span class="news-card__meta-dot"
+                    aria-hidden="true"></span><time datetime="2026-04-28">28 Abr 2026</time><span
+                    class="news-card__meta-dot" aria-hidden="true"></span><span>8 min lectura</span></div>
+                <h2 class="news-card__title">Dionisio Santana analiza el panorama político dominicano de cara a las
+                  próximas elecciones</h2>
+                <p class="news-card__excerpt">En un extenso análisis, el conductor de Batallando desmenuzó las
+                  propuestas de los principales partidos políticos, evaluando su impacto sobre la ciudadanía
+                  dominicana y el futuro del país.</p>
+                <div class="news-card__footer">
+                  <div class="news-card__author">
+                    <div class="news-card__author-avatar" aria-hidden="true">DS</div>Dionisio Santana
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="news-card news-card--sm" tabindex="0" role="article">
+              <div class="news-card__img-wrap">
+                <img src="assets/Batallando/dioni13.png" class="nc-img" alt="Política"
+                  style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
+                <div class="news-card__img-overlay" aria-hidden="true"></div>
+                <div class="news-card__badge"><span class="tag tag--gold">POLÍTICA</span></div>
+              </div>
+              <div class="news-card__body">
+                <div class="news-card__meta"><time datetime="2026-04-27">27 Abr 2026</time><span
+                    class="news-card__meta-dot" aria-hidden="true"></span><span>5 min</span></div>
+                <h3 class="news-card__title">Reformas al sistema electoral dominicano: ¿Qué está cambiando?</h3>
+                <div class="news-card__footer">
+                  <div class="news-card__author">
+                    <div class="news-card__author-avatar" style="background:var(--red);" aria-hidden="true">B</div>
+                    Batallando
+                  </div><a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
+                    rel="noopener noreferrer" class="news-card__read-more" aria-label="Ver en YouTube">Leer <svg
+                      width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg></a>
+                </div>
+              </div>
+            </article>
+            <article class="news-card news-card--sm" tabindex="0" role="article">
+              <div class="news-card__img-wrap" style="background:#000;">
+                <video autoplay muted playsinline loop
+                  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
+                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                </video>
+                <div class="news-card__img-overlay" aria-hidden="true" style="z-index:1;"></div>
+                <div class="news-card__badge" style="z-index:2;"><span class="tag tag--blue">ECONOMÍA</span></div>
+              </div>
+              <div class="news-card__body">
+                <div class="news-card__meta"><time datetime="2026-04-26">26 Abr 2026</time><span
+                    class="news-card__meta-dot" aria-hidden="true"></span><span>6 min</span></div>
+                <h3 class="news-card__title">Economía dominicana: Crecimiento sostenido en medio de desafíos globales
+                </h3>
+                <div class="news-card__footer">
+                  <div class="news-card__author">
+                    <div class="news-card__author-avatar" style="background:var(--sky);color:var(--charcoal);"
+                      aria-hidden="true">B</div>Batallando
+                  </div><a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
+                    rel="noopener noreferrer" class="news-card__read-more" aria-label="Ver en YouTube">Leer <svg
+                      width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg></a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="section-header reveal" style="margin-top:48px;">
+            <h2 class="section-header__title">📰 Más Noticias</h2>
+            <a href="#" class="section-header__link">Ver todas <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg></a>
+          </div>
+          <div class="news-grid" id="news-grid" role="list" aria-label="Lista de noticias"></div>
+        </main>
+        <aside class="sidebar" aria-label="Barra lateral">
+          <div class="host-card reveal" id="sobre-dionisio">
+            <div class="host-card__photo" aria-label="Foto de Dionisio Santana"
+              style="background:transparent;border:none;box-shadow:none;border-radius:0;width:120px;height:120px;overflow:visible;">
+              <img src="assets/Batallando/Dinodioni.png" alt="Dionisio Santana"
+                style="width:100%;height:100%;object-fit:contain;object-position:bottom;">
+            </div>
+            <div class="host-card__name">Dionisio Santana</div>
+            <div class="host-card__role">Conductor &amp; Periodista</div>
+            <p class="host-card__bio">Periodista y conductor dominicano, reconocido por su estilo directo y análisis
+              profundo de la realidad política de República Dominicana. Fundador del programa Batallando.</p>
+            <div class="host-card__social">
+              <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA" target="_blank" rel="noopener noreferrer"
+                title="YouTube" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg></a>
+              <a href="#" title="Facebook" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg></a>
+              <a href="#" title="Instagram" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg></a>
+            </div>
+          </div>
+          <div class="social-widget reveal">
+            <div class="social-widget__title">Síguenos</div>
+            <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA?sub_confirmation=1" target="_blank"
+              rel="noopener noreferrer" class="social-count-item social-count-item--yt"
+              aria-label="YouTube — 85K+ suscriptores">
+              <div class="social-count-icon social-count-icon--yt"><svg width="20" height="20" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg></div>
+              <div class="social-count-info">
+                <div class="social-count-num">85K+</div>
+                <div class="social-count-label">Suscriptores</div>
+              </div>
+              <div class="social-count-action">Sub</div>
+            </a>
+            <a href="#" class="social-count-item social-count-item--ig" aria-label="Instagram — 25K+ seguidores">
+              <div class="social-count-icon social-count-icon--ig"><svg width="20" height="20" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg></div>
+              <div class="social-count-info">
+                <div class="social-count-num">25K+</div>
+                <div class="social-count-label">Seguidores IG</div>
+              </div>
+              <div class="social-count-action">Follow</div>
+            </a>
+            <a href="#" class="social-count-item social-count-item--fb" aria-label="Facebook — 40K+ fans">
+              <div class="social-count-icon social-count-icon--fb"><svg width="20" height="20" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg></div>
+              <div class="social-count-info">
+                <div class="social-count-num">40K+</div>
+                <div class="social-count-label">Me gustas FB</div>
+              </div>
+              <div class="social-count-action">Like</div>
+            </a>
+          </div>
+          <div class="subscribe-box reveal">
+            <div class="subscribe-box__title">📬 Newsletter</div>
+            <p class="subscribe-box__desc">Recibe las noticias más importantes directamente en tu correo, sin spam.</p>
+            <input type="email" class="subscribe-box__input" placeholder="tu@correo.com" aria-label="Email newsletter"
+              autocomplete="email" id="newsletter-email" />
+            <button class="subscribe-box__btn" onclick="handleSubscribe(this)" type="button">Suscribirme Gratis</button>
+          </div>
+          <div class="trending-widget reveal">
+            <h3 class="trending-widget__title">Lo Más Leído</h3>
+            <div id="trending-list" role="list" aria-label="Artículos más leídos"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ENTREVISTAS ═══ -->
+  <section id="entrevistas" class="interview-section" aria-label="Entrevistas exclusivas">
+    <div class="container">
+      <div class="interview-inner">
+        <div class="interview-content reveal">
+          <span class="section-label">Entrevistas Exclusivas</span>
+          <h2>Conversaciones que<br>mueven a <em style="color:var(--sky);font-style:normal;">República Dominicana</em>
+          </h2>
+          <p>En Batallando, Dionisio Santana entrevista a los actores más influyentes del panorama político, económico y
+            social dominicano. Debates sin filtros, preguntas difíciles y respuestas que hacen historia.</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <a href="#video-player" class="btn btn--sky">Ver Entrevistas</a>
+            <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
+              rel="noopener noreferrer" class="btn btn--outline">Canal YouTube</a>
+          </div>
+        </div>
+        <div class="interview-img reveal reveal-delay-2">
+          <img src="assets/Batallando/Entrevista.PNG" alt="Dionisio Santana en el estudio de Batallando TV"
+            style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;" loading="lazy" />
+          <div style="position:absolute;top:20px;right:20px;"><span class="tag tag--sky">🎙️ EN VIVO</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BLOG ═══ -->
+  <section id="blog" class="blog-section" aria-label="Blog">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-header__title">✍️ Blog &amp; Opinión</h2>
+        <a href="#" class="section-header__link">Ver todos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" width="14" height="14">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
+      </div>
+      <div class="blog-grid" id="blog-grid" role="list" aria-label="Artículos del blog"></div>
+    </div>
+  </section>
+
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer" id="contacto" aria-label="Pie de página">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div style="margin-bottom:16px;">
+            <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
+              style="height: 52px; width: auto; object-fit: contain; max-width: 280px;">
+          </div>
+          <p class="footer__brand-desc">El programa de noticias y análisis político más directo de República Dominicana.
+            Información sin filtros, debates reales y la verdad que necesitas.</p>
+          <nav class="footer__social" aria-label="Redes sociales">
+            <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA" target="_blank" rel="noopener noreferrer"
+              title="YouTube" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg></a>
+            <a href="#" title="Facebook" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg></a>
+            <a href="#" title="Instagram" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg></a>
+            <a href="#" title="Twitter / X" aria-label="Twitter X">𝕏</a>
+          </nav>
+        </div>
+        <div>
+          <div class="footer__col-title">Secciones</div>
+          <nav class="footer__links"><a href="#">Noticias</a><a href="#">Política</a><a href="#">Economía</a><a
+              href="#">Internacional</a><a href="#">Sociedad</a><a href="#">Deportes</a></nav>
+        </div>
+        <div>
+          <div class="footer__col-title">Programa</div>
+          <nav class="footer__links"><a href="#video-player">Videos</a><a href="#entrevistas">Entrevistas</a><a
+              href="#blog">Blog</a><a href="#">Transmisión en Vivo</a><a href="#sobre-dionisio">Sobre Dionisio</a><a
+              href="#">YouTube</a></nav>
+        </div>
+        <div>
+          <div class="footer__col-title">Contacto Oficial</div>
+          <div
+            style="display:flex;flex-direction:column;gap:12px;font-family:var(--font-ui);font-size:13px;color:rgba(255,255,255,.7);">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span><strong>Cabina:</strong> <a href="tel:+18092621919"
+                  style="color:inherit;text-decoration:none;">809-262-1919</a> / <a href="tel:+18092000866"
+                  style="color:inherit;text-decoration:none;">1-809-200-0866</a></span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span><strong>Oficina:</strong> <a href="tel:+18098273436"
+                  style="color:inherit;text-decoration:none;">809-827-3436</a> / <a href="tel:+18093285874"
+                  style="color:inherit;text-decoration:none;">809-328-5874</a></span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+              <span><strong>WhatsApp:</strong> <a href="https://wa.me/18296433436"
+                  style="color:inherit;text-decoration:none;">829-643-3436</a></span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <a href="mailto:batallandotvds@gmail.com"
+                style="color:inherit;text-decoration:none;">batallandotvds@gmail.com</a>
+            </div>
+          </div>
+          <div style="margin-top:20px;">
+            <address
+              style="font-family:var(--font-ui);font-size:13px;color:rgba(255,255,255,.55);font-style:normal;line-height:1.6;display:flex;gap:8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"
+                style="flex-shrink:0;">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <div>Plaza Juan Duarte, Av Simón Bolívar 217,<br>Santo Domingo, RD 🇩🇴</div>
+            </address>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span style="color:rgba(255,255,255,.7);">© <span id="footer-year">2026</span> Batallando con Dionisio Santana.
+          Todos los derechos reservados.</span>
+        <span style="color:rgba(255,255,255,.5);">Hecho por <a href="https://logiccodespot.com" target="_blank"
+            rel="noopener noreferrer">Logic Code Space</a></span>
+      </div>
+    </div>
+    <div class="flag-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  </footer>
+
+  <button class="back-top-btn" id="back-top-btn" data-back-top-btn onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    aria-label="Volver al inicio" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </button>
+
+  <!-- ══════════════════════════════════════════════════════
+     SCRIPTS — INTRO + APP ENGINE
+══════════════════════════════════════════════════════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script>
+    'use strict';
+
+    /* ══════ SECURITY ══════ */
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) || (e.ctrlKey && e.key === 'u')) e.preventDefault();
+    });
+
+    /* ══════════════════════════════════════════════════════
+       ★ 3D INTRO ENGINE
+    ══════════════════════════════════════════════════════ */
+    (function () {
+      const intro = document.getElementById('bb-intro');
+      const ldr = document.getElementById('bb-ldr');
+      const vbg = document.getElementById('bb-vbg');
+      const brand = document.getElementById('bb-brand');
+      const div = document.getElementById('bb-div');
+      const cta = document.getElementById('bb-cta');
+      if (!intro) return;
+      let entered = false;
+
+      /* Lock scroll */
+      document.body.style.overflow = 'hidden';
+
+      /* Three.js particles */
+      function initThree() {
+        const canvas = document.getElementById('bb-canvas');
+        if (!canvas || typeof THREE === 'undefined') return;
+        const W = innerWidth, H = innerHeight;
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+        renderer.setSize(W, H);
+        const scene = new THREE.Scene();
+        const cam = new THREE.PerspectiveCamera(60, W / H, .1, 1000);
+        cam.position.z = 5;
+
+        /* Particles */
+        const N = 2000, pos = new Float32Array(N * 3), col = new Float32Array(N * 3);
+        const clrs = [new THREE.Color('#21c8f2'), new THREE.Color('#1858e3'), new THREE.Color('#CE1126'), new THREE.Color('#ffffff'), new THREE.Color('#3d7fff')];
+        for (let i = 0; i < N; i++) {
+          pos[i * 3] = (Math.random() - .5) * 24; pos[i * 3 + 1] = (Math.random() - .5) * 24; pos[i * 3 + 2] = (Math.random() - .5) * 24;
+          const c = clrs[Math.floor(Math.random() * clrs.length)];
+          col[i * 3] = c.r; col[i * 3 + 1] = c.g; col[i * 3 + 2] = c.b;
+        }
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+        const mat = new THREE.PointsMaterial({ size: .058, vertexColors: true, transparent: true, opacity: .75, blending: THREE.AdditiveBlending, depthWrite: false });
+        const pts = new THREE.Points(geo, mat);
+        scene.add(pts);
+
+        /* Orbit ring */
+        const rg = new THREE.RingGeometry(2.4, 2.5, 64);
+        const rm = new THREE.MeshBasicMaterial({ color: 0x21c8f2, side: THREE.DoubleSide, transparent: true, opacity: .07, blending: THREE.AdditiveBlending, depthWrite: false });
+        const ring = new THREE.Mesh(rg, rm); ring.rotation.x = Math.PI / 3; scene.add(ring);
+
+        /* Helix */
+        const hpts = [];
+        for (let i = 0; i < 200; i++) { const t = i / 200 * Math.PI * 6; hpts.push(Math.cos(t) * 2.8, i / 200 * 10 - 5, Math.sin(t) * 2.8, Math.cos(t + Math.PI) * 2.8, i / 200 * 10 - 5, Math.sin(t + Math.PI) * 2.8); }
+        const hg = new THREE.BufferGeometry(); hg.setAttribute('position', new THREE.Float32BufferAttribute(hpts, 3));
+        const hm = new THREE.LineBasicMaterial({ color: 0x21c8f2, transparent: true, opacity: .09, blending: THREE.AdditiveBlending, depthWrite: false });
+        scene.add(new THREE.LineSegments(hg, hm));
+
+        let mx = 0, my = 0;
+        window.addEventListener('mousemove', e => { mx = (e.clientX / innerWidth - .5) * 2; my = -(e.clientY / innerHeight - .5) * 2; }, { passive: true });
+        window.addEventListener('resize', () => { cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); }, { passive: true });
+
+        let f = 0;
+        (function loop() {
+          requestAnimationFrame(loop); f++; const t = f * .005;
+          pts.rotation.y = t * .07; pts.rotation.x = t * .025;
+          ring.rotation.z = t * .38; ring.rotation.y = t * .16;
+          cam.position.x += (mx * .75 - cam.position.x) * .04;
+          cam.position.y += (my * .5 - cam.position.y) * .04;
+          cam.lookAt(scene.position);
+          mat.opacity = .6 + Math.sin(t * 2) * .15;
+          renderer.render(scene, cam);
+        })();
+      }
+
+      /* Reveal sequence */
+      function revealIntro() {
+        ldr.style.opacity = '0';
+        setTimeout(() => { ldr.style.display = 'none'; }, 700);
+        vbg.classList.add('bb-vis');
+        setTimeout(() => {
+          brand.classList.add('bb-show');
+          setTimeout(() => div.classList.add('bb-expand'), 350);
+          setTimeout(() => cta.classList.add('bb-show'), 900);
+        }, 550);
+      }
+
+      /* Enter */
+      window.bbEnter = function () {
+        if (entered) return; entered = true;
+        const btn = document.getElementById('bb-entrar');
+        if (btn) { btn.innerHTML = '<svg width="26" height="26" viewBox="0 0 24 24" style="flex-shrink:0" fill="none" stroke="white" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg> ¡BIENVENIDO!'; btn.style.background = 'linear-gradient(135deg,#CE1126,#9e0d1e)'; }
+        vbg.pause();
+        setTimeout(() => {
+          intro.classList.add('bb-exit');
+          intro.addEventListener('transitionend', () => { intro.remove(); document.body.style.overflow = ''; }, { once: true });
+        }, 450);
+      };
+
+      /* Keyboard */
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') { bbEnter(); return; }
+        if ((e.key === 'Enter' || e.key === ' ') && cta.classList.contains('bb-show')) { e.preventDefault(); bbEnter(); }
+      });
+
+      /* Auto skip 20s */
+      setTimeout(() => { if (!entered && cta.classList.contains('bb-show')) bbEnter(); }, 20000);
+
+      /* Init Three after CDN loads */
+      function tryThree() { if (typeof THREE !== 'undefined') { initThree(); } else { setTimeout(tryThree, 100); } }
+
+      /* Video init */
+      if (vbg.readyState >= 3) { revealIntro(); }
+      else {
+        vbg.addEventListener('canplay', revealIntro, { once: true });
+        vbg.load(); vbg.play().catch(() => { });
+        setTimeout(() => { if (!entered && ldr.style.display !== 'none') revealIntro(); }, 3000);
+      }
+      setTimeout(tryThree, 200);
+    })();
+
+    /* ══════════════════════════════════════════════════════
+       APP DATA
+    ══════════════════════════════════════════════════════ */
+    const newsData = [
+      { category: 'politica', tag: 'Política', tagClass: 'red', icon: '🏛️', gradient: 'linear-gradient(135deg,#CE1126,#9e0d1e)', title: 'El Congreso Nacional debate nuevas leyes de transparencia', date: '28 Abr 2026', isoDate: '2026-04-28', mins: 4, excerpt: 'Los legisladores presentaron un paquete de reformas que buscan aumentar la rendición de cuentas de las instituciones públicas dominicanas.' },
+      { category: 'economia', tag: 'Economía', tagClass: 'blue', icon: '💰', gradient: 'linear-gradient(135deg,#21c8f2,#1858e3)', title: 'Turismo dominicano supera récord histórico de visitantes', date: '27 Abr 2026', isoDate: '2026-04-27', mins: 5, excerpt: 'El sector turístico reportó más de 9 millones de visitantes extranjeros en el primer trimestre, superando las proyecciones del Ministerio de Turismo.' },
+      { category: 'sociedad', tag: 'Sociedad', tagClass: 'gold', icon: '🤝', gradient: 'linear-gradient(135deg,#f0a500,#c77e00)', title: 'Nuevos programas de educación digital llegan a las provincias', date: '26 Abr 2026', isoDate: '2026-04-26', mins: 3, excerpt: 'El Ministerio de Educación anuncia la expansión de laboratorios tecnológicos a 200 escuelas en zonas rurales de todo el país.' },
+      { category: 'internacional', tag: 'Internacional', tagClass: 'blue', icon: '🌎', gradient: 'linear-gradient(135deg,#1858e3,#0f3fb5)', title: 'RD fortalece relaciones diplomáticas con países de América Latina', date: '25 Abr 2026', isoDate: '2026-04-25', mins: 6, excerpt: 'El Ministerio de Relaciones Exteriores firmó nuevos acuerdos de cooperación que beneficiarán sectores clave de la economía nacional.' },
+      { category: 'politica', tag: 'Política', tagClass: 'red', icon: '🗳️', gradient: 'linear-gradient(135deg,#9e0d1e,#CE1126)', title: 'Partidos políticos inician campaña para las próximas municipales', date: '24 Abr 2026', isoDate: '2026-04-24', mins: 7, excerpt: 'Los principales partidos del país lanzan sus estrategias electorales para los comicios municipales previstos para el próximo año.' },
+      { category: 'deportes', tag: 'Deportes', tagClass: 'gold', icon: '⚾', gradient: 'linear-gradient(135deg,#f0a500,#1858e3)', title: 'Béisbol dominicano brilla en el inicio de la temporada MLB 2026', date: '23 Abr 2026', isoDate: '2026-04-23', mins: 4, excerpt: 'Los peloteros dominicanos en las Grandes Ligas muestran un rendimiento excepcional en las primeras semanas de la temporada.' }
+    ];
+    const blogData = [
+      { icon: '✍️', gradient: 'linear-gradient(135deg,#1858e3,#21c8f2)', tag: 'Opinión', tagClass: 'blue', title: 'El periodismo como herramienta de cambio social en RD', date: '28 Abr 2026', isoDate: '2026-04-28', author: 'DS', authorName: 'Dionisio Santana', mins: 8, excerpt: 'Reflexiones sobre el papel fundamental del periodismo independiente en la construcción de una sociedad más informada y participativa en República Dominicana.' },
+      { icon: '🏛️', gradient: 'linear-gradient(135deg,#CE1126,#9e0d1e)', tag: 'Análisis', tagClass: 'red', title: '¿Hacia dónde va la democracia dominicana en el siglo XXI?', date: '25 Abr 2026', isoDate: '2026-04-25', author: 'B', authorName: 'Batallando', mins: 12, excerpt: 'Un análisis profundo de los avances y los desafíos que enfrenta el sistema democrático dominicano en un contexto regional cambiante.' },
+      { icon: '📊', gradient: 'linear-gradient(135deg,#f0a500,#1858e3)', tag: 'Economía', tagClass: 'gold', title: 'La economía naranja: oportunidades para los jóvenes dominicanos', date: '22 Abr 2026', isoDate: '2026-04-22', author: 'B', authorName: 'Redacción', mins: 6, excerpt: 'Cómo la economía creativa y digital abre nuevas puertas para miles de jóvenes dominicanos que buscan su lugar en el mercado laboral moderno.' }
+    ];
+    const videoData = [
+      { title: 'Debate Político: El Futuro de República Dominicana — Análisis con Dionisio Santana', gradient: 'linear-gradient(135deg,#1858e3,#21c8f2)', duration: '45:22', views: '125K', date: 'Hace 2 días', featured: true },
+      { title: 'Entrevista Exclusiva: Secretos del Gabinete Presidencial', gradient: 'linear-gradient(135deg,#CE1126,#9e0d1e)', duration: '32:15', views: '98K', date: 'Hace 4 días', featured: false },
+      { title: 'Análisis Profundo: Economía Dominicana 2026', gradient: 'linear-gradient(135deg,#f0a500,#c77e00)', duration: '28:40', views: '76K', date: 'Hace 1 semana', featured: false }
+    ];
+    const trendingData = [
+      { title: 'Congreso aprueba reforma constitucional que cambia el sistema electoral', date: 'Hace 3h' },
+      { title: 'República Dominicana lidera crecimiento económico en el Caribe', date: 'Hace 5h' },
+      { title: 'Entrevista de Batallando supera 1 millón de vistas en 24 horas', date: 'Hace 8h' },
+      { title: 'Debate presidencial: ¿Quién salió ganando según los dominicanos?', date: 'Hace 1 día' },
+      { title: 'La nueva ley de transparencia: lo que debes saber', date: 'Hace 2 días' }
+    ];
+    const playlistData = [
+      { title: 'Análisis Político: Panorama Electoral 2026', duration: '45:22', views: '125K', gradient: 'linear-gradient(135deg,#1858e3,#21c8f2)', icon: '🏛️' },
+      { title: 'Entrevista Exclusiva: Ministro de Economía', duration: '32:15', views: '98K', gradient: 'linear-gradient(135deg,#CE1126,#9e0d1e)', icon: '💼' },
+      { title: 'Economía Dominicana: Cifras y Proyecciones', duration: '28:40', views: '76K', gradient: 'linear-gradient(135deg,#f0a500,#1858e3)', icon: '📊' },
+      { title: 'Debate: Reforma Constitucional en RD', duration: '54:10', views: '210K', gradient: 'linear-gradient(135deg,#21c8f2,#0f3fb5)', icon: '⚖️' }
+    ];
+
+    const ARROW = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+    const PLAY = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>`;
+    const YT = `<svg width="38" height="38" viewBox="0 0 24 24" fill="rgba(255,255,255,0.2)"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
+
+    /* ── Carousel image pool: 5 validated landscape shots ── */
+    const CARD_IMGS = [
+      { src: 'assets/Batallando/dioni12.png', pos: 'center center' },
+      { src: 'assets/Batallando/dioni13.png', pos: 'center center' },
+      { src: 'assets/Batallando/Entrevista.PNG', pos: 'center center' },
+      { src: 'assets/Batallando/intro-batallando.PNG', pos: 'center center' },
+      { src: 'assets/Batallando/Batallando6.png', pos: 'center 58%' }
+    ];
+
+    function renderNewsGrid(data) {
+      const g = document.getElementById('news-grid'); if (!g) return;
+      g.innerHTML = data.map((i, idx) => {
+        const startIdx = idx % CARD_IMGS.length;
+        return `<article class="news-card news-card--sm reveal" role="listitem" tabindex="0">
+          <div class="news-card__img-wrap">
+            <div class="nc-slide" data-cur="${startIdx}" style="width:100%;height:100%;position:relative;overflow:hidden;">
+              <img class="nc-img nc-img-a" src="${CARD_IMGS[startIdx].src}" alt=""
+                draggable="false"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${CARD_IMGS[startIdx].pos};opacity:1;transition:opacity .75s ease;transform:scale(1.06);animation:ncKB 5s ease-in-out infinite alternate;">
+              <img class="nc-img nc-img-b" src="${CARD_IMGS[(startIdx + 1) % CARD_IMGS.length].src}" alt=""
+                draggable="false"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${CARD_IMGS[(startIdx + 1) % CARD_IMGS.length].pos};opacity:0;transition:opacity .75s ease;transform:scale(1.06);animation:ncKB 5s ease-in-out infinite alternate-reverse;">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,rgba(0,0,0,.1) 60%,transparent 100%);z-index:1;"></div>
+            </div>
+            <div class="news-card__img-overlay"></div>
+            <div class="news-card__badge"><span class="tag tag--${i.tagClass}" style="font-size:10px;padding:3px 10px;">${i.tag}</span></div>
+          </div>
+          <div class="news-card__body">
+            <div class="news-card__meta"><time datetime="${i.isoDate}">${i.date}</time><span class="news-card__meta-dot"></span><span>${i.mins} min</span></div>
+            <h3 class="news-card__title" style="font-size:16px;">${i.title}</h3>
+            <p class="news-card__excerpt">${i.excerpt}</p>
+            <div class="news-card__footer">
+              <div class="news-card__author">
+                <div class="news-card__author-avatar" style="background:transparent;">
+                  <img src="assets/Batallando/Batallando TV 2024.png" draggable="false" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);">
+                </div>Batallando TV
+              </div>
+              <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank" rel="noopener noreferrer" class="news-card__read-more" aria-label="Ver en YouTube">Leer más ${ARROW}</a>
+            </div>
+          </div>
+        </article>`;
+      }).join('');
+
+      /* ── Staggered non-repeating crossfade engine ── */
+      document.querySelectorAll('.nc-slide').forEach((slide, cardIdx) => {
+        let cur = parseInt(slide.dataset.cur);
+        const imgA = slide.querySelector('.nc-img-a');
+        const imgB = slide.querySelector('.nc-img-b');
+        let showingA = true;
+
+        /* Preload next image and pick next index that differs from current */
+        function nextIdx(current) {
+          /* Skip to an index that's not the current one, staggered by card position */
+          let n = (current + 1 + cardIdx) % CARD_IMGS.length;
+          if (n === current) n = (n + 1) % CARD_IMGS.length;
+          return n;
+        }
+
+        /* Stagger start time so cards don't flip simultaneously */
+        setTimeout(() => {
+          setInterval(() => {
+            const next = nextIdx(cur);
+            if (showingA) {
+              imgB.src = CARD_IMGS[next].src;
+              imgB.style.objectPosition = CARD_IMGS[next].pos;
+              imgB.style.opacity = '1';
+              imgA.style.opacity = '0';
+            } else {
+              imgA.src = CARD_IMGS[next].src;
+              imgA.style.objectPosition = CARD_IMGS[next].pos;
+              imgA.style.opacity = '1';
+              imgB.style.opacity = '0';
+            }
+            showingA = !showingA;
+            cur = next;
+          }, 4500);
+        }, cardIdx * 800); /* 800ms stagger between each card */
+      });
+      observeReveal();
+    }
+    function renderVideoGrid() {
+      const g = document.getElementById('video-grid'); if (!g) return;
+      const [feat, ...rest] = videoData;
+      g.innerHTML = `<div class="video-card video-card--featured" role="listitem" tabindex="0"><div class="video-card__thumb"><div class="video-card__thumb-bg" style="background:${feat.gradient};">${YT}</div><div class="video-card__overlay"><div class="video-card__play-btn">${PLAY}</div></div><span class="video-card__duration">${feat.duration}</span><div style="position:absolute;top:10px;left:10px;"><span class="tag tag--sky" style="font-size:10px;">DESTACADO</span></div></div><div class="video-card__body"><div class="video-card__meta"><span>📺 Batallando TV</span><span>•</span><span>${feat.views} vistas</span><span>•</span><span>${feat.date}</span></div><h3 class="video-card__title">${feat.title}</h3><p style="font-family:var(--font-ui);font-size:13px;color:var(--dark-gray);line-height:1.65;margin-top:10px;">El episodio más visto de la semana. Dionisio Santana analiza en profundidad los temas que están definiendo el futuro del país.</p><a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank" rel="noopener noreferrer" class="btn btn--blue" style="margin-top:18px;font-size:12px;padding:10px 20px;">${PLAY} Ver en YouTube</a></div></div>${rest.map(v => `<div class="video-card" role="listitem" tabindex="0"><div class="video-card__thumb"><div class="video-card__thumb-bg" style="background:${v.gradient};">${YT}</div><div class="video-card__overlay"><div class="video-card__play-btn">${PLAY}</div></div><span class="video-card__duration">${v.duration}</span></div><div class="video-card__body"><div class="video-card__meta"><span>${v.views} vistas</span><span>•</span><span>${v.date}</span></div><h3 class="video-card__title">${v.title}</h3></div></div>`).join('')}`;
+    }
+    function renderBlog() {
+      const g = document.getElementById('blog-grid'); if (!g) return;
+      g.innerHTML = blogData.map((i, idx) => {
+        const img = CARD_IMGS[(idx + 2) % CARD_IMGS.length];
+        return `<article class="blog-card reveal" role="listitem" tabindex="0"><div class="blog-card__img"><img src="${img.src}" style="width:100%;height:100%;object-fit:cover;object-position:${img.pos};" alt=""/></div><div class="blog-card__body"><div class="blog-card__tag"><span class="tag tag--${i.tagClass}">${i.tag}</span></div><h3 class="blog-card__title">${i.title}</h3><p class="blog-card__excerpt">${i.excerpt}</p><div class="blog-card__footer"><div class="blog-card__avatar" style="background:transparent;"><img src="assets/Batallando/Batallando TV 2024.png" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);"></div><div><div style="font-weight:600;color:var(--charcoal);font-size:13px;">${i.authorName}</div><div><time datetime="${i.isoDate}">${i.date}</time> · ${i.mins} min</div></div></div></div></article>`;
+      }).join('');
+      observeReveal();
+    }
+    function renderTrending() {
+      const l = document.getElementById('trending-list'); if (!l) return;
+      l.innerHTML = trendingData.map((i, n) => `<div class="trending-item" role="listitem" tabindex="0"><span class="trending-item__num">${String(n + 1).padStart(2, '0')}</span><div><div class="trending-item__title">${i.title}</div><div class="trending-item__meta">🕐 ${i.date}</div></div></div>`).join('');
+    }
+    function renderPlaylist() {
+      const el = document.getElementById('videoPlaylist'); if (!el) return;
+      el.innerHTML = playlistData.map((i, n) => `<div class="playlist-item${n === 0 ? ' active' : ''}" onclick="selectPlaylistItem(${n})" role="button" tabindex="0" aria-label="Reproducir: ${i.title}"><div class="playlist-item__thumb"><div class="playlist-item__thumb-bg" style="background:${i.gradient};display:flex;align-items:center;justify-content:center;"><img src="assets/Batallando/Batallando TV 2024.png" style="width:60%;height:auto;object-fit:contain;" alt=""/></div><div class="playlist-item__play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="playlist-item__info"><div class="playlist-item__title">${i.title}</div><div class="playlist-item__meta">👁 ${i.views}</div></div><span class="playlist-item__duration">${i.duration}</span></div>`).join('');
+    }
+    function selectPlaylistItem(idx) {
+      document.querySelectorAll('.playlist-item').forEach((el, i) => el.classList.toggle('active', i === idx));
+      showToast(`▶ Reproduciendo: ${playlistData[idx].title.substring(0, 40)}…`, 'info');
+      const v = document.getElementById('mainVideo');
+      if (v) { v.src = 'video/batallando.mp4'; v.play().catch(() => { }); }
+    }
+
+    /* ══════ VIDEO PLAYER ══════ */
+    (function initPlayer() {
+      const video = document.getElementById('mainVideo');
+      const thumbnail = document.getElementById('thumbnail');
+      const bigPlayBtn = document.getElementById('bigPlayBtn');
+      const pauseOverlay = document.getElementById('pauseOverlay');
+      const centerPlay = document.getElementById('centerPlayBtn');
+      const centerIcon = document.getElementById('centerPlayIcon');
+      const playPauseBtn = document.getElementById('playPauseBtn');
+      const playPauseIcon = document.getElementById('playPauseIcon');
+      const skipBack = document.getElementById('skipBackBtn');
+      const skipFwd = document.getElementById('skipFwdBtn');
+      const muteBtn = document.getElementById('muteBtn');
+      const volumeIcon = document.getElementById('volumeIcon');
+      const volumeSlider = document.getElementById('volumeSlider');
+      const progressWrap = document.getElementById('progressWrap');
+      const progressBar = document.getElementById('progressBar');
+      const progressBuf = document.getElementById('progressBuffered');
+      const timeDisplay = document.getElementById('timeDisplay');
+      const speedBtn = document.getElementById('speedBtn');
+      const fullscreenBtn = document.getElementById('fullscreenBtn');
+      const pipBtn = document.getElementById('pipBtn');
+      const chaptersEl = document.getElementById('chaptersStrip');
+      const player = document.getElementById('customPlayer');
+      if (!video || !player) return;
+
+      const speeds = [0.5, 0.75, 1, 1.25, 1.5, 2]; let speedIdx = 2, isPlaying = false, isMuted = false, hideT;
+      const chapters = [{ title: 'Introducción', pct: 0 }, { title: 'Análisis', pct: 15 }, { title: 'Debate', pct: 40 }, { title: 'Entrevista', pct: 65 }, { title: 'Conclusión', pct: 85 }];
+
+      function buildChapters() { if (!chaptersEl) return; chaptersEl.innerHTML = chapters.map((c, i) => `<div class="cp-chapter${i === 0 ? ' active' : ''}" data-pct="${c.pct}" title="${c.title}" onclick="seekToChapterPct(${c.pct / 100})"></div>`).join(''); }
+      window.seekToChapterPct = function (p) { if (video.duration) video.currentTime = video.duration * p; };
+
+      function fmt(s) { if (isNaN(s)) return '0:00'; const m = Math.floor(s / 60), sec = Math.floor(s % 60); return `${m}:${sec.toString().padStart(2, '0')}`; }
+      function updIcon(p) { const pi = `<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>`, pl = `<polygon points="5,3 19,12 5,21"/>`; if (playPauseIcon) playPauseIcon.innerHTML = p ? pi : pl; if (centerIcon) centerIcon.innerHTML = p ? pi : pl; }
+
+      function startPlay() {
+        thumbnail.classList.add('hidden'); thumbnail.style.opacity = '0'; thumbnail.style.pointerEvents = 'none';
+        video.play().then(() => { isPlaying = true; updIcon(true); }).catch(() => showToast('Coloca el archivo en video/batallando.mp4 📁', 'info'));
+      }
+      if (bigPlayBtn) bigPlayBtn.addEventListener('click', startPlay);
+
+      function togglePlay() {
+        if (video.paused) { video.play().then(() => { isPlaying = true; updIcon(true); pauseOverlay.classList.add('hidden'); }).catch(() => { }); }
+        else { video.pause(); isPlaying = false; updIcon(false); pauseOverlay.classList.remove('hidden'); }
+      }
+      if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlay);
+      if (centerPlay) centerPlay.addEventListener('click', togglePlay);
+
+      const wrap = document.getElementById('playerWrap');
+      if (wrap) wrap.addEventListener('click', e => {
+        if (e.target === bigPlayBtn || e.target.closest('#bigPlayBtn')) return;
+        if (!thumbnail.classList.contains('hidden')) { startPlay(); return; }
+        togglePlay(); pauseOverlay.classList.remove('hidden'); clearTimeout(hideT);
+        hideT = setTimeout(() => { if (isPlaying) pauseOverlay.classList.add('hidden'); }, 800);
+      });
+
+      if (skipBack) skipBack.addEventListener('click', () => { video.currentTime = Math.max(0, video.currentTime - 10); showToast('⏪ -10s', 'info'); });
+      if (skipFwd) skipFwd.addEventListener('click', () => { video.currentTime = Math.min(video.duration || 0, video.currentTime + 10); showToast('⏩ +10s', 'info'); });
+
+      if (volumeSlider) volumeSlider.addEventListener('input', e => { video.volume = parseFloat(e.target.value); isMuted = video.volume === 0; video.muted = isMuted; updVol(); });
+      if (muteBtn) muteBtn.addEventListener('click', () => { isMuted = !isMuted; video.muted = isMuted; if (volumeSlider) volumeSlider.value = isMuted ? 0 : 1; updVol(); });
+      function updVol() { if (!volumeIcon) return; volumeIcon.innerHTML = isMuted || video.volume === 0 ? `<polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>` : `<polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>`; }
+
+      function updProgress() {
+        if (!video.duration) return;
+        const pct = (video.currentTime / video.duration) * 100;
+        if (progressBar) progressBar.style.width = pct + '%';
+        if (progressWrap) progressWrap.setAttribute('aria-valuenow', Math.round(pct));
+        if (timeDisplay) timeDisplay.textContent = `${fmt(video.currentTime)} / ${fmt(video.duration)}`;
+        if (video.buffered.length && progressBuf) { const b = (video.buffered.end(video.buffered.length - 1) / video.duration) * 100; progressBuf.style.width = b + '%'; }
+        document.querySelectorAll('.cp-chapter').forEach(c => c.classList.toggle('active', pct >= parseFloat(c.dataset.pct)));
+      }
+      video.addEventListener('timeupdate', updProgress);
+      video.addEventListener('loadedmetadata', updProgress);
+
+      if (progressWrap) {
+        progressWrap.addEventListener('click', e => { const r = progressWrap.getBoundingClientRect(); video.currentTime = ((e.clientX - r.left) / r.width) * (video.duration || 0); });
+        let drag = false;
+        progressWrap.addEventListener('mousedown', () => drag = true);
+        document.addEventListener('mousemove', e => { if (!drag) return; const r = progressWrap.getBoundingClientRect(); video.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * (video.duration || 0); });
+        document.addEventListener('mouseup', () => drag = false);
+        progressWrap.addEventListener('touchstart', e => { const r = progressWrap.getBoundingClientRect(); video.currentTime = Math.max(0, Math.min(1, (e.touches[0].clientX - r.left) / r.width)) * (video.duration || 0); }, { passive: true });
+      }
+
+      if (speedBtn) speedBtn.addEventListener('click', () => { speedIdx = (speedIdx + 1) % speeds.length; video.playbackRate = speeds[speedIdx]; speedBtn.textContent = speeds[speedIdx] + 'x'; showToast(`⚡ Velocidad: ${speeds[speedIdx]}x`, 'info'); });
+      if (fullscreenBtn) fullscreenBtn.addEventListener('click', () => { if (!document.fullscreenElement) player.requestFullscreen().catch(() => { }); else document.exitFullscreen().catch(() => { }); });
+      document.addEventListener('fullscreenchange', () => { const ic = document.getElementById('fullscreenIcon'); if (!ic) return; ic.innerHTML = document.fullscreenElement ? `<path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 0 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/>` : `<path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>`; });
+      if ('pictureInPictureEnabled' in document && pipBtn) { pipBtn.style.display = 'flex'; pipBtn.addEventListener('click', async () => { try { document.pictureInPictureElement ? await document.exitPictureInPicture() : await video.requestPictureInPicture(); } catch (e) { } }); }
+
+      document.addEventListener('keydown', e => {
+        const ac = document.activeElement;
+        if (ac && ['INPUT', 'TEXTAREA', 'SELECT'].includes(ac.tagName)) return;
+        if (document.getElementById('bb-intro')) return; // Don't intercept during intro
+        switch (e.key) {
+          case ' ': case 'k': e.preventDefault(); togglePlay(); break;
+          case 'ArrowLeft': e.preventDefault(); video.currentTime = Math.max(0, video.currentTime - 5); break;
+          case 'ArrowRight': e.preventDefault(); video.currentTime = Math.min(video.duration || 0, video.currentTime + 5); break;
+          case 'm': video.muted = !video.muted; isMuted = video.muted; updVol(); break;
+          case 'f': fullscreenBtn && fullscreenBtn.click(); break;
+        }
+      });
+
+      video.addEventListener('ended', () => { isPlaying = false; updIcon(false); pauseOverlay.classList.remove('hidden'); });
+      let lastTap = 0;
+      if (wrap) wrap.addEventListener('touchend', e => { const now = Date.now(); if (now - lastTap < 300) { e.preventDefault(); const x = e.changedTouches[0].clientX; const mid = wrap.getBoundingClientRect().width / 2; if (x < mid) { video.currentTime = Math.max(0, video.currentTime - 10); } else { video.currentTime = Math.min(video.duration || 0, video.currentTime + 10); } } lastTap = now; });
+
+      buildChapters(); updProgress();
+    })();
+
+    /* ══════ UTILITIES ══════ */
+    function filterNews(cat) {
+      const f = cat === 'all' ? newsData : newsData.filter(n => n.category === cat);
+      renderNewsGrid(f.length ? f : newsData);
+      document.getElementById('noticias')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      showToast(`Filtrando: ${cat.charAt(0).toUpperCase() + cat.slice(1)}`, 'info');
+    }
+    function showToast(msg, type = 'success') {
+      const c = document.getElementById('toast-container'); if (!c) return;
+      const icons = { success: '✅', error: '❌', info: '💡', welcome: '👋' };
+      const t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'alert');
+      t.innerHTML = `<span>${icons[type] || '📢'}</span> ${msg}`; c.appendChild(t);
+      setTimeout(() => { if (t.parentNode) t.parentNode.removeChild(t); }, 4500);
+    }
+    async function handleShare() {
+      if (navigator.share) { try { await navigator.share({ title: 'Batallando con Dionisio Santana', url: window.location.href }); } catch (e) { } }
+      else { navigator.clipboard?.writeText(window.location.href); showToast('🔗 Enlace copiado al portapapeles', 'success'); }
+    }
+    function handleLike() { showToast('❤️ ¡Gracias por tu apoyo a Batallando!', 'success'); }
+    function handleSubscribe(btn) {
+      const input = document.getElementById('newsletter-email');
+      const email = input?.value.trim() || '';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { if (input) { input.style.borderColor = 'var(--red)'; setTimeout(() => input.style.borderColor = '', 2500); } showToast('Por favor ingresa un email válido', 'error'); return; }
+      const orig = btn.textContent; btn.textContent = '✅ ¡Suscrito! Gracias'; btn.style.background = 'var(--blue-dark)'; btn.disabled = true; if (input) input.value = '';
+      showToast('¡Gracias! Te has suscrito al newsletter de Batallando 📬', 'success');
+      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 4000);
+    }
+
+    /* ══════ PRELOADER ══════ */
+    window.addEventListener('load', () => {
+      const pre = document.querySelector('[data-preaload]');
+      if (pre) setTimeout(() => pre.classList.add('loaded'), 1200);
+      setTimeout(() => document.body.classList.add('loaded'), 1000);
+      document.dispatchEvent(new Event('appLoaded'));
+    });
+    document.addEventListener('bbIntroComplete', () => setTimeout(() => showToast('¡Bienvenidos a Batallando con Dionisio Santana! 🇩🇴', 'welcome'), 600));
+
+    /* ══════ NAV ══════ */
+    const hamburger = document.getElementById('hamburger');
+    const overlay = document.getElementById('menu-overlay');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function closeMM() { mobileMenu?.classList.remove('active'); hamburger?.classList.remove('open'); hamburger?.setAttribute('aria-expanded', 'false'); overlay?.classList.remove('active'); document.body.style.overflow = ''; }
+    function openMM() { mobileMenu?.classList.add('active'); hamburger?.classList.add('open'); hamburger?.setAttribute('aria-expanded', 'true'); overlay?.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function toggleMM() { mobileMenu?.classList.contains('active') ? closeMM() : openMM(); }
+    document.querySelectorAll('[data-nav-toggler]').forEach(el => el.addEventListener('click', toggleMM));
+    document.querySelectorAll('[data-nav-link]').forEach(el => el.addEventListener('click', closeMM));
+    overlay?.addEventListener('click', closeMM);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileMenu?.classList.contains('active')) closeMM(); });
+
+    /* ══════ SCROLL ══════ */
+    const headerEl = document.querySelector('[data-header]');
+    const backTop = document.querySelector('[data-back-top-btn]');
+    window.addEventListener('scroll', () => { const s = window.scrollY >= 100; headerEl?.classList.toggle('active', s); backTop?.classList.toggle('active', s); }, { passive: true });
+
+    /* ══════ REVEAL ══════ */
+    function observeReveal() {
+      const els = document.querySelectorAll('.reveal:not(.visible)'); if (!els.length) return;
+      const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(el => obs.observe(el));
+    }
+
+    /* ══════ COUNTERS ══════ */
+    function animateCounter(el, end, suffix) {
+      if (!el) return; const dur = 1800, t0 = performance.now();
+      (function tick(t) { const p = Math.min((t - t0) / dur, 1), val = Math.floor((1 - Math.pow(1 - p, 3)) * end); el.textContent = val + suffix; if (p < 1) requestAnimationFrame(tick); else el.textContent = end + suffix; })(t0);
+    }
+    function initCounters() {
+      const stats = document.querySelector('.hero__stats'); if (!stats) return;
+      new IntersectionObserver(entries => { if (entries[0].isIntersecting) { animateCounter(document.getElementById('stat-subs'), 85, 'K+'); animateCounter(document.getElementById('stat-videos'), 500, '+'); animateCounter(document.getElementById('stat-views'), 10, 'M+'); } }, { threshold: .4 }).observe(stats);
+    }
+
+    /* ══════ SEARCH ══════ */
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) { let st; searchInput.addEventListener('input', function () { clearTimeout(st); const q = this.value.trim().toLowerCase(); st = setTimeout(() => { if (q.length >= 2) { const r = newsData.filter(n => n.title.toLowerCase().includes(q) || n.excerpt.toLowerCase().includes(q)); renderNewsGrid(r.length ? r : newsData); if (r.length) document.getElementById('noticias')?.scrollIntoView({ behavior: 'smooth' }); } else if (!q) renderNewsGrid(newsData); }, 350); }); }
+
+    /* ══════ DATE ══════ */
+    function updateDate() {
+      const el = document.getElementById('current-date'); if (!el) return;
+      const d = new Date(); const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']; const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+      el.textContent = `${days[d.getDay()]}, ${d.getDate()} de ${months[d.getMonth()]} de ${d.getFullYear()}`;
+      const yr = document.getElementById('footer-year'); if (yr) yr.textContent = d.getFullYear();
+    }
+
+    /* ══════ TICKER ══════ */
+    function initTicker() { const t = document.getElementById('ticker'); if (t) t.innerHTML += t.innerHTML; }
+
+    /* ══════ INIT ══════ */
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNewsGrid(newsData); renderBlog(); renderTrending(); renderPlaylist();
+      updateDate(); observeReveal(); initCounters(); initTicker();
+    });
+
+    /* ══════ CONTENT PROTECTION ══════ */
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+    document.addEventListener('keydown', e => { if (e.ctrlKey && ['u', 's', 'a'].includes(e.key.toLowerCase())) e.preventDefault(); });
+  </script>
+</body>
+
+</html>
