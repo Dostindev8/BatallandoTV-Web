@@ -3869,9 +3869,9 @@
       <div class="bb-lring"></div>
     </div>
 
-    <!-- Video background -->
-    <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
-      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+    <!-- ⚡ BOLT OPTIMIZATION: Background video set to preload="metadata" to balance bandwidth saving with autoplay readiness -->
+    <video id="bb-vbg" autoplay muted playsinline loop preload="metadata" disablePictureInPicture aria-hidden="true">
+      <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
     </video>
 
     <!-- FX layers -->
@@ -3939,7 +3939,9 @@
   <!-- ═══ PRELOADER ═══ -->
   <div class="preloader no-select" data-preaload aria-hidden="true">
     <div class="preloader__logo-wrap" style="flex-direction: column; gap: 16px;">
+      <!-- ⚡ BOLT OPTIMIZATION: Critical asset, using eager loading -->
       <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
+        loading="eager" decoding="async"
         style="height: 70px; width: auto; object-fit: contain; max-width: 90vw;">
     </div>
     <div class="preloader__bar-wrap">
@@ -4018,7 +4020,9 @@
       <div class="container">
         <div class="navbar__inner">
           <a href="#" class="navbar__logo" aria-label="Batallando — Inicio">
+            <!-- ⚡ BOLT OPTIMIZATION: Critical asset, using eager loading -->
             <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
+              loading="eager" decoding="async"
               style="height: 44px; width: auto; object-fit: contain; max-width: 220px;">
           </a>
           <div class="navbar__nav">
@@ -4133,8 +4137,9 @@
             <div class="hero__video-badge"><span class="tag tag--live">▶ ÚLTIMO EPISODIO</span></div>
             <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
               rel="noopener noreferrer" aria-label="Ver en YouTube" style="display:block;width:100%;height:100%;">
-              <img src="/assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
-                alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" decoding="async"
+              <!-- ⚡ BOLT OPTIMIZATION: Hero LCP image prioritized with fetchpriority="high" -->
+              <img src="assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
+                alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" decoding="async" fetchpriority="high"
                 style="width:100%; height:100%; object-fit:cover; display:block;">
               <div
                 style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);pointer-events:none;">
@@ -4313,10 +4318,11 @@
         <div>
           <div class="custom-player" id="customPlayer" style="pointer-events: none;">
             <div class="custom-player__video-wrap" id="playerWrap">
-              <video id="mainVideo" preload="auto" autoplay muted loop playsinline
+              <!-- ⚡ BOLT OPTIMIZATION: Main player video set to preload="none" to save ~26MB initial bandwidth -->
+              <video id="mainVideo" preload="none" autoplay muted loop playsinline
                 style="width:100%;height:100%;display:block;object-fit:cover;"
                 aria-label="Video de Batallando con Dionisio Santana">
-                <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -4894,12 +4900,13 @@
         const startIdx = idx % CARD_IMGS.length;
         return `<article class="news-card news-card--sm reveal" role="listitem" tabindex="0">
           <div class="news-card__img-wrap">
+            <!-- ⚡ BOLT OPTIMIZATION: Dynamic images use lazy loading and async decoding -->
             <div class="nc-slide" data-cur="${startIdx}" style="width:100%;height:100%;position:relative;overflow:hidden;">
               <img class="nc-img nc-img-a" src="${CARD_IMGS[startIdx].src}" alt=""
-                draggable="false"
+                draggable="false" loading="lazy" decoding="async"
                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${CARD_IMGS[startIdx].pos};opacity:1;transition:opacity .75s ease;transform:scale(1.06);animation:ncKB 5s ease-in-out infinite alternate;">
               <img class="nc-img nc-img-b" src="${CARD_IMGS[(startIdx + 1) % CARD_IMGS.length].src}" alt=""
-                draggable="false"
+                draggable="false" loading="lazy" decoding="async"
                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${CARD_IMGS[(startIdx + 1) % CARD_IMGS.length].pos};opacity:0;transition:opacity .75s ease;transform:scale(1.06);animation:ncKB 5s ease-in-out infinite alternate-reverse;">
               <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,rgba(0,0,0,.1) 60%,transparent 100%);z-index:1;"></div>
             </div>
@@ -4968,7 +4975,8 @@
       const g = document.getElementById('blog-grid'); if (!g) return;
       g.innerHTML = blogData.map((i, idx) => {
         const img = CARD_IMGS[(idx + 2) % CARD_IMGS.length];
-        return `<article class="blog-card reveal" role="listitem" tabindex="0"><div class="blog-card__img"><img src="${img.src}" style="width:100%;height:100%;object-fit:cover;object-position:${img.pos};" alt=""/></div><div class="blog-card__body"><div class="blog-card__tag"><span class="tag tag--${i.tagClass}">${i.tag}</span></div><h3 class="blog-card__title">${i.title}</h3><p class="blog-card__excerpt">${i.excerpt}</p><div class="blog-card__footer"><div class="blog-card__avatar" style="background:transparent;"><img src="assets/Batallando/Batallando TV 2024.png" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);"></div><div><div style="font-weight:600;color:var(--charcoal);font-size:13px;">${i.authorName}</div><div><time datetime="${i.isoDate}">${i.date}</time> · ${i.mins} min</div></div></div></div></article>`;
+        // ⚡ BOLT OPTIMIZATION: Added loading="lazy" and decoding="async" to blog images
+        return `<article class="blog-card reveal" role="listitem" tabindex="0"><div class="blog-card__img"><img src="${img.src}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:${img.pos};" alt=""/></div><div class="blog-card__body"><div class="blog-card__tag"><span class="tag tag--${i.tagClass}">${i.tag}</span></div><h3 class="blog-card__title">${i.title}</h3><p class="blog-card__excerpt">${i.excerpt}</p><div class="blog-card__footer"><div class="blog-card__avatar" style="background:transparent;"><img src="assets/Batallando/Batallando%20TV%202024.png" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);"></div><div><div style="font-weight:600;color:var(--charcoal);font-size:13px;">${i.authorName}</div><div><time datetime="${i.isoDate}">${i.date}</time> · ${i.mins} min</div></div></div></div></article>`;
       }).join('');
       observeReveal();
     }
@@ -4978,7 +4986,8 @@
     }
     function renderPlaylist() {
       const el = document.getElementById('videoPlaylist'); if (!el) return;
-      el.innerHTML = playlistData.map((i, n) => `<div class="playlist-item${n === 0 ? ' active' : ''}" onclick="selectPlaylistItem(${n})" role="button" tabindex="0" aria-label="Reproducir: ${i.title}"><div class="playlist-item__thumb"><div class="playlist-item__thumb-bg" style="background:${i.gradient};display:flex;align-items:center;justify-content:center;"><img src="assets/Batallando/Batallando TV 2024.png" style="width:60%;height:auto;object-fit:contain;" alt=""/></div><div class="playlist-item__play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="playlist-item__info"><div class="playlist-item__title">${i.title}</div><div class="playlist-item__meta">👁 ${i.views}</div></div><span class="playlist-item__duration">${i.duration}</span></div>`).join('');
+      // ⚡ BOLT OPTIMIZATION: Added loading="lazy" and decoding="async" to playlist thumbnails
+      el.innerHTML = playlistData.map((i, n) => `<div class="playlist-item${n === 0 ? ' active' : ''}" onclick="selectPlaylistItem(${n})" role="button" tabindex="0" aria-label="Reproducir: ${i.title}"><div class="playlist-item__thumb"><div class="playlist-item__thumb-bg" style="background:${i.gradient};display:flex;align-items:center;justify-content:center;"><img src="assets/Batallando/Batallando%20TV%202024.png" loading="lazy" decoding="async" style="width:60%;height:auto;object-fit:contain;" alt=""/></div><div class="playlist-item__play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="playlist-item__info"><div class="playlist-item__title">${i.title}</div><div class="playlist-item__meta">👁 ${i.views}</div></div><span class="playlist-item__duration">${i.duration}</span></div>`).join('');
     }
     function selectPlaylistItem(idx) {
       document.querySelectorAll('.playlist-item').forEach((el, i) => el.classList.toggle('active', i === idx));
