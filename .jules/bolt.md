@@ -1,0 +1,3 @@
+## 2024-05-18 - Critical Asset Loading & Bandwidth Optimization
+**Learning:** In a static media-heavy site without a build pipeline, optimizing the initial load requires a combination of resource hints (`preconnect`), priority hints (`fetchpriority`), and careful management of media preloading. Misconfigured video paths (404s) and aggressive preloading (`preload="auto"`) for decorative background videos are significant performance killers. URI encoding of asset paths is also critical for robustness in various environments.
+**Action:** Always check the browser console for 404s during profiling. Prioritize LCP elements (logos, hero images) with `fetchpriority="high"` and `loading="eager"`. Use `preload="metadata"` or `none` for non-critical videos to save bandwidth.
