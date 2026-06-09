@@ -1,0 +1,3 @@
+## 2026-06-09 - Path Robustness and Asset Prioritization
+**Learning:** In static sites lacking a build pipeline (like Webpack/Vite), asset paths with spaces (e.g., "SIN FIN - BATALLANDO.mp4") fail to resolve in many environments if not manually URI-encoded. Additionally, browsers default to 'low' priority for most images, delaying the Largest Contentful Paint (LCP) if the hero image isn't explicitly prioritized.
+**Action:** Always URI-encode asset filenames containing spaces in HTML/JS templates and apply `fetchpriority="high"` with `loading="eager"` to critical LCP elements like branding logos and hero images to optimize the critical path.
