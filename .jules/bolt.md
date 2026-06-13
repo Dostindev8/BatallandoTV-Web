@@ -1,0 +1,3 @@
+## 2025-05-15 - Asset Loading Optimization & Path Robustness
+**Learning:** In a vanilla Three.js project without a build pipeline, manual URI-encoding of asset paths (e.g., %20 for spaces) is essential to prevent loader failures. Additionally, using `fetchpriority="high"` on the preloader and navbar logos significantly improves the Largest Contentful Paint (LCP) by signaling priority to the browser's preload scanner before the Three.js scene even initializes.
+**Action:** Always verify asset paths for special characters and prioritize LCP elements with `fetchpriority` in static HTML files to optimize the critical rendering path.
