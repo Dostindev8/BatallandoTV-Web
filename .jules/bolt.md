@@ -1,0 +1,3 @@
+## 2025-05-14 - Optimizing Static Page with Dynamic JS Templates
+**Learning:** In a project without a build pipeline where UI components are rendered via client-side JavaScript template literals, standard HTML attributes like `loading="lazy"` must be manually injected into those strings. Additionally, when serving static files via `http.server`, relative paths in JS must match the URL structure exactly to avoid 404s on media assets.
+**Action:** Always verify dynamically rendered content using Playwright to ensure performance attributes (lazy, fetchpriority) are correctly applied to the final DOM, as static code analysis of the HTML file might miss these template-bound elements.
