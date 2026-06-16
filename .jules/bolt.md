@@ -1,0 +1,3 @@
+## 2025-05-15 - Optimizing Video Preloading and LCP Assets
+**Learning:** Using `preload="auto"` on background videos can cause significant bandwidth waste during initial load, as the browser attempts to download the entire file even if it's not immediately playing or below the fold. For this repository, changing this to `preload="metadata"` saved ~26MB of initial data transfer. Additionally, manually URI-encoding asset paths with spaces (e.g., `%20`) is necessary in this static environment to prevent broken resources.
+**Action:** Always audit `video` elements for `preload` attributes and prioritize `metadata` for non-critical background videos. Ensure LCP assets are explicitly marked with `fetchpriority="high"` and `loading="eager"`.
