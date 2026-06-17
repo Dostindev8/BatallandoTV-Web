@@ -1,0 +1,3 @@
+## 2025-05-14 - Asset Path URI Encoding & Relative Resolution
+**Learning:** The static asset resolution in this project is sensitive to URI encoding and path formatting. High-priority assets like the background video failed to load (404) because the codebase used a legacy `images/` directory reference and lacked URI encoding for spaces (e.g., `SIN FIN...` instead of `SIN%20FIN...`). Additionally, leading slashes in paths can cause resolution failures depending on the server root configuration.
+**Action:** Always URI-encode asset paths containing special characters and prefer relative paths without a leading slash. Verify all critical assets via Playwright `requestfailed` listeners during performance profiling.
