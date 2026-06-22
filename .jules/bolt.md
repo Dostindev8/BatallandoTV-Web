@@ -1,0 +1,3 @@
+## 2024-05-24 - LCP Optimization and Resource Prioritization
+**Learning:** In a static, media-heavy site without a build pipeline, critical above-the-fold assets (like the Three.js-based intro and the hero video) often lack proper prioritization, leading to high Largest Contentful Paint (LCP) times. Manually URI-encoding paths is also essential to avoid 404s when filenames contain spaces.
+**Action:** Always audit the first visible viewport for LCP candidates. Apply 'fetchpriority="high"' and 'loading="eager"' to these assets, use 'preconnect' for external CDNs (like cdnjs), and ensure all dynamic template literal images use 'loading="lazy"' and 'decoding="async"'.
