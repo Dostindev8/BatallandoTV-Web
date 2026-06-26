@@ -1,0 +1,3 @@
+## 2026-05-21 - Resource Resolution and LCP Prioritization
+**Learning:** This codebase lacks a build pipeline, leading to unencoded asset paths (spaces in filenames) that cause 404s and break LCP. Additionally, Playwright may report `net::ERR_ABORTED` for media assets if the browser stops buffering or the context is closed, which can be a false positive for failure if status 200/206 was previously seen.
+**Action:** Always URI-encode asset paths in HTML/JS template literals and verify media loading via server logs or explicit status code checks rather than relying solely on global request failure events. Use `fetchpriority="high"` for critical brand assets like the intro video and logos to ensure optimal LCP in this static architecture.
