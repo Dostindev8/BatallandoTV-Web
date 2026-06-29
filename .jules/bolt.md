@@ -1,0 +1,3 @@
+## 2026-06-29 - LCP Optimization and Asset Path Robustness
+**Learning:** In this repository, critical LCP assets (like the intro video and brand logos) were failing to load due to incorrect directory paths and unencoded spaces in filenames. Since there is no build pipeline to handle asset resolution, manual URI encoding and explicit resource prioritization (`fetchpriority="high"`) are essential to ensure fast, reliable loading of above-the-fold content.
+**Action:** Always verify that media paths in `index.html` and JS templates use the `assets/Batallando/` directory, are URI-encoded, and have appropriate loading attributes (`fetchpriority="high"` for LCP, `loading="lazy"` for off-screen).
