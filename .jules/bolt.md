@@ -1,0 +1,3 @@
+## 2026-05-22 - Critical Asset Pathing and LCP Prioritization
+**Learning:** In this static repository, a 404 error on a critical LCP asset (the intro video) was the primary performance bottleneck. Furthermore, using leading slashes in asset paths (e.g., `/assets/...`) can cause resolution issues in certain environments; standardized relative paths (e.g., `assets/...`) are more robust.
+**Action:** Prioritize fixing network errors for LCP assets using URI-encoded relative paths and apply `fetchpriority="high"` specifically to the `<video>` and above-the-fold `<img>` tags to ensure optimal resource scheduling in Chromium browsers.
