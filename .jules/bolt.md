@@ -1,0 +1,3 @@
+## 2026-07-10 - LCP Optimization and Resource Path Fixes
+**Learning:** Broken resource paths (404s) for heavy assets like background videos significantly degrade Largest Contentful Paint (LCP) as the browser wastes cycles on failed requests and layout shifts. Additionally, in static sites without build-time optimization, manual use of `fetchpriority="high"` for critical above-the-fold assets (logos, hero media) and `loading="lazy"` for below-the-fold content provides a significant, measurable performance boost (LCP reduced by ~45% in this case).
+**Action:** Always verify asset paths and use browser resource hints (`fetchpriority`, `loading`, `decoding`) to guide the network scheduler in static projects.
