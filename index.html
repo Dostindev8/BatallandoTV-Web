@@ -16,7 +16,8 @@
   <meta property="og:url" content="https://batallando.tv" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>BatallandoTv</title>
-  <link rel="icon" type="image/png" href="assets/Batallando/Batallando TV 2024.png" width="100" height="100" />
+  <!-- ⚡ BOLT OPTIMIZATION: URI-encoded favicon path for consistent loading -->
+  <link rel="icon" type="image/png" href="assets/Batallando/Batallando%20TV%202024.png" width="100" height="100" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -3870,8 +3871,9 @@
     </div>
 
     <!-- Video background -->
+    <!-- ⚡ BOLT OPTIMIZATION: Fixed video source path from 'images/' to 'assets/Batallando/' to resolve 404 error -->
     <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
-      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+      <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
     </video>
 
     <!-- FX layers -->
@@ -3939,7 +3941,8 @@
   <!-- ═══ PRELOADER ═══ -->
   <div class="preloader no-select" data-preaload aria-hidden="true">
     <div class="preloader__logo-wrap" style="flex-direction: column; gap: 16px;">
-      <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
+      <!-- ⚡ BOLT OPTIMIZATION: High fetchpriority for preloader logo to ensure immediate display -->
+      <img src="assets/Batallando/Batallando%20TV%202024.png" fetchpriority="high" alt="Batallando Logo"
         style="height: 70px; width: auto; object-fit: contain; max-width: 90vw;">
     </div>
     <div class="preloader__bar-wrap">
@@ -4018,6 +4021,7 @@
       <div class="container">
         <div class="navbar__inner">
           <a href="#" class="navbar__logo" aria-label="Batallando — Inicio">
+            <!-- ⚡ BOLT OPTIMIZATION: URI-encoded logo path -->
             <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
               style="height: 44px; width: auto; object-fit: contain; max-width: 220px;">
           </a>
@@ -4133,7 +4137,8 @@
             <div class="hero__video-badge"><span class="tag tag--live">▶ ÚLTIMO EPISODIO</span></div>
             <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
               rel="noopener noreferrer" aria-label="Ver en YouTube" style="display:block;width:100%;height:100%;">
-              <img src="/assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
+              <!-- ⚡ BOLT OPTIMIZATION: High fetchpriority on the Hero image (LCP candidate) and path correction to resolve 404 -->
+              <img src="assets/Batallando/Batallando6.png" fetchpriority="high" title="Batallando — Canal YouTube"
                 alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" decoding="async"
                 style="width:100%; height:100%; object-fit:cover; display:block;">
               <div
