@@ -3871,7 +3871,8 @@
 
     <!-- Video background -->
     <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
-      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+      <!-- ⚡ BOLT OPTIMIZATION: URI-encoded path to ensure robust asset loading and fix 404s -->
+      <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
     </video>
 
     <!-- FX layers -->
@@ -4133,8 +4134,9 @@
             <div class="hero__video-badge"><span class="tag tag--live">▶ ÚLTIMO EPISODIO</span></div>
             <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
               rel="noopener noreferrer" aria-label="Ver en YouTube" style="display:block;width:100%;height:100%;">
-              <img src="/assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
-                alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" decoding="async"
+              <!-- ⚡ BOLT OPTIMIZATION: LCP candidate prioritized with fetchpriority="high" and loading="eager" -->
+              <img src="assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
+                alt="Último Episodio de Batallando con Dionisio Santana" fetchpriority="high" loading="eager"
                 style="width:100%; height:100%; object-fit:cover; display:block;">
               <div
                 style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);pointer-events:none;">
@@ -4316,7 +4318,7 @@
               <video id="mainVideo" preload="auto" autoplay muted loop playsinline
                 style="width:100%;height:100%;display:block;object-fit:cover;"
                 aria-label="Video de Batallando con Dionisio Santana">
-                <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -4389,7 +4391,7 @@
               <div class="news-card__img-wrap" style="background:#000;">
                 <video autoplay muted playsinline loop
                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
-                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                  <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
                 </video>
                 <img src="assets/Batallando/Batallando-wiski.png" class="nc-img" alt="Batallando TV"
                   style="position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block;min-height:260px;transform-origin:bottom;" />
@@ -4440,7 +4442,7 @@
               <div class="news-card__img-wrap" style="background:#000;">
                 <video autoplay muted playsinline loop
                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
-                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                  <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
                 </video>
                 <div class="news-card__img-overlay" aria-hidden="true" style="z-index:1;"></div>
                 <div class="news-card__badge" style="z-index:2;"><span class="tag tag--blue">ECONOMÍA</span></div>
