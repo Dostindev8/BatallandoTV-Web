@@ -1,0 +1,3 @@
+## 2026-05-22 - URI Encoding and LCP Prioritization
+**Learning:** In this static repository, assets with spaces in filenames (e.g., "Batallando TV 2024.png") consistently fail to load with 404 errors unless manually URI-encoded in both HTML and JS. Additionally, because the main UI is rendered via JS template literals, critical LCP assets like the intro video and hero image suffer from discovery delays.
+**Action:** Always URI-encode asset paths (replace spaces with %20). Implement `<link rel="preload">` and `fetchpriority="high"` in the static HTML `head` for the intro video and hero image to bypass JS-driven discovery delays.
