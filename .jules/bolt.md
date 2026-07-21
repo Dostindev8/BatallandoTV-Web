@@ -1,0 +1,3 @@
+## 2026-07-21 - Resource preloads & path fixes
+**Learning:** Hardcoded asset path issues (like `images/` or `video/` when assets are actually in `assets/Batallando/`) cause 404 resource errors and slow down critical Largest Contentful Paint (LCP) performance. Preloading these critical assets (like video background and hero image) directly in index.html, preconnecting to required external CDNs, and applying proper lazy-loading attributes on below-the-fold dynamic assets maximizes initial page load speeds.
+**Action:** Always verify all media source paths resolve cleanly via local server logs and use standard HTML resource preloads and lazy loading to boost rendering performance.
