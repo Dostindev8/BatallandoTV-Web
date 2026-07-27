@@ -16,7 +16,12 @@
   <meta property="og:url" content="https://batallando.tv" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>BatallandoTv</title>
-  <link rel="icon" type="image/png" href="assets/Batallando/Batallando TV 2024.png" width="100" height="100" />
+  <!-- ⚡ BOLT OPTIMIZATION: preconnect to CDN for faster loading of scripts/assets -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <!-- ⚡ BOLT OPTIMIZATION: preload critical hero image to improve LCP -->
+  <link rel="preload" href="assets/Batallando/Batallando6.png" as="image" fetchpriority="high" />
+  <!-- ⚡ BOLT OPTIMIZATION: URI-encode the icon file name for robust cross-environment loading -->
+  <link rel="icon" type="image/png" href="assets/Batallando/Batallando%20TV%202024.png" width="100" height="100" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -3870,8 +3875,9 @@
     </div>
 
     <!-- Video background -->
-    <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
-      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+    <!-- ⚡ BOLT OPTIMIZATION: Fix 404 image path to assets/Batallando/ and preload metadata to minimize contention -->
+    <video id="bb-vbg" autoplay muted playsinline loop preload="metadata" disablePictureInPicture aria-hidden="true">
+      <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
     </video>
 
     <!-- FX layers -->
@@ -3895,7 +3901,8 @@
       <!-- 3D Cube -->
       <div class="bb-cube-wrap" aria-label="Logo Batallando 3D">
         <div class="bb-face bb-face-f" style="display:flex;align-items:center;justify-content:center;">
-          <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Logo"
+          <!-- ⚡ BOLT OPTIMIZATION: Use fetchpriority="high" and loading="eager" for LCP 3D Cube Front face logo -->
+          <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Logo" fetchpriority="high" loading="eager"
             style="width:85%;height:85%;object-fit:contain;transform:scale(1.2);">
         </div>
         <div class="bb-face bb-face-bk">🇩🇴</div>
@@ -3939,7 +3946,8 @@
   <!-- ═══ PRELOADER ═══ -->
   <div class="preloader no-select" data-preaload aria-hidden="true">
     <div class="preloader__logo-wrap" style="flex-direction: column; gap: 16px;">
-      <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
+      <!-- ⚡ BOLT OPTIMIZATION: Use fetchpriority="high" and loading="eager" on LCP preloader logo -->
+      <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo" fetchpriority="high" loading="eager"
         style="height: 70px; width: auto; object-fit: contain; max-width: 90vw;">
     </div>
     <div class="preloader__bar-wrap">
@@ -4018,7 +4026,8 @@
       <div class="container">
         <div class="navbar__inner">
           <a href="#" class="navbar__logo" aria-label="Batallando — Inicio">
-            <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
+            <!-- ⚡ BOLT OPTIMIZATION: Use fetchpriority="high" and loading="eager" on LCP navbar logo -->
+            <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo" fetchpriority="high" loading="eager"
               style="height: 44px; width: auto; object-fit: contain; max-width: 220px;">
           </a>
           <div class="navbar__nav">
@@ -4133,8 +4142,9 @@
             <div class="hero__video-badge"><span class="tag tag--live">▶ ÚLTIMO EPISODIO</span></div>
             <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
               rel="noopener noreferrer" aria-label="Ver en YouTube" style="display:block;width:100%;height:100%;">
-              <img src="/assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
-                alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" decoding="async"
+              <!-- ⚡ BOLT OPTIMIZATION: Use fetchpriority="high" and loading="eager" on LCP hero main image, and remove leading slash and decoding="async" to avoid duplicate/incorrect attributes -->
+              <img src="assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
+                alt="Último Episodio de Batallando con Dionisio Santana" fetchpriority="high" loading="eager"
                 style="width:100%; height:100%; object-fit:cover; display:block;">
               <div
                 style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);pointer-events:none;">
@@ -4313,10 +4323,11 @@
         <div>
           <div class="custom-player" id="customPlayer" style="pointer-events: none;">
             <div class="custom-player__video-wrap" id="playerWrap">
-              <video id="mainVideo" preload="auto" autoplay muted loop playsinline
+              <!-- ⚡ BOLT OPTIMIZATION: preload metadata instead of auto to reduce early data transfer contention -->
+              <video id="mainVideo" preload="metadata" autoplay muted loop playsinline
                 style="width:100%;height:100%;display:block;object-fit:cover;"
                 aria-label="Video de Batallando con Dionisio Santana">
-                <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -4984,7 +4995,8 @@
       document.querySelectorAll('.playlist-item').forEach((el, i) => el.classList.toggle('active', i === idx));
       showToast(`▶ Reproduciendo: ${playlistData[idx].title.substring(0, 40)}…`, 'info');
       const v = document.getElementById('mainVideo');
-      if (v) { v.src = 'video/batallando.mp4'; v.play().catch(() => { }); }
+      /* ⚡ BOLT OPTIMIZATION: Use valid URI-encoded local resource path and catch failures quietly to respect autoplay restrictions */
+      if (v) { v.src = 'assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4'; v.play().catch(() => { }); }
     }
 
     /* ══════ VIDEO PLAYER ══════ */
@@ -5024,7 +5036,8 @@
 
       function startPlay() {
         thumbnail.classList.add('hidden'); thumbnail.style.opacity = '0'; thumbnail.style.pointerEvents = 'none';
-        video.play().then(() => { isPlaying = true; updIcon(true); }).catch(() => showToast('Coloca el archivo en video/batallando.mp4 📁', 'info'));
+        /* ⚡ BOLT OPTIMIZATION: Do not show an intrusive toast warning for video play catch blocks under browser autoplay restrictions */
+        video.play().then(() => { isPlaying = true; updIcon(true); }).catch(() => { });
       }
       if (bigPlayBtn) bigPlayBtn.addEventListener('click', startPlay);
 
