@@ -16,9 +16,12 @@
   <meta property="og:url" content="https://batallando.tv" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>BatallandoTv</title>
-  <link rel="icon" type="image/png" href="assets/Batallando/Batallando TV 2024.png" width="100" height="100" />
+  <!-- ⚡ BOLT OPTIMIZATION: Use URI-encoded path for icon robustness and add preconnect/preload resource hints to accelerate critical discovery -->
+  <link rel="icon" type="image/png" href="assets/Batallando/Batallando%20TV%202024.png" width="100" height="100" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preload" href="assets/Batallando/Batallando6.png" as="image" fetchpriority="high" />
   <link
     href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Barlow:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
@@ -3870,8 +3873,9 @@
     </div>
 
     <!-- Video background -->
-    <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
-      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+    <!-- ⚡ BOLT OPTIMIZATION: Set preload="metadata" for autoplaying background video to optimize resource scheduling, and correct the 404 video path -->
+    <video id="bb-vbg" autoplay muted playsinline loop preload="metadata" disablePictureInPicture aria-hidden="true">
+      <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
     </video>
 
     <!-- FX layers -->
@@ -4133,8 +4137,9 @@
             <div class="hero__video-badge"><span class="tag tag--live">▶ ÚLTIMO EPISODIO</span></div>
             <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
               rel="noopener noreferrer" aria-label="Ver en YouTube" style="display:block;width:100%;height:100%;">
-              <img src="/assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
-                alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" decoding="async"
+              <!-- ⚡ BOLT OPTIMIZATION: Prioritize LCP hero image above-the-fold and make path relative, avoiding decoding="async" on eager above-the-fold assets -->
+              <img src="assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
+                alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" fetchpriority="high"
                 style="width:100%; height:100%; object-fit:cover; display:block;">
               <div
                 style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);pointer-events:none;">
@@ -4313,10 +4318,11 @@
         <div>
           <div class="custom-player" id="customPlayer" style="pointer-events: none;">
             <div class="custom-player__video-wrap" id="playerWrap">
+              <!-- ⚡ BOLT OPTIMIZATION: Use relative, URI-encoded asset paths for robustness -->
               <video id="mainVideo" preload="auto" autoplay muted loop playsinline
                 style="width:100%;height:100%;display:block;object-fit:cover;"
                 aria-label="Video de Batallando con Dionisio Santana">
-                <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -4387,9 +4393,10 @@
           <div class="featured-grid reveal">
             <article class="news-card news-card--featured" tabindex="0" role="article">
               <div class="news-card__img-wrap" style="background:#000;">
-                <video autoplay muted playsinline loop
+                <!-- ⚡ BOLT OPTIMIZATION: Set preload="metadata" for background video and URI-encode path -->
+                <video autoplay muted playsinline loop preload="metadata"
                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
-                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                  <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
                 </video>
                 <img src="assets/Batallando/Batallando-wiski.png" class="nc-img" alt="Batallando TV"
                   style="position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block;min-height:260px;transform-origin:bottom;" />
@@ -4438,9 +4445,10 @@
             </article>
             <article class="news-card news-card--sm" tabindex="0" role="article">
               <div class="news-card__img-wrap" style="background:#000;">
-                <video autoplay muted playsinline loop
+                <!-- ⚡ BOLT OPTIMIZATION: Set preload="metadata" for background video and URI-encode path -->
+                <video autoplay muted playsinline loop preload="metadata"
                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
-                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                  <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
                 </video>
                 <div class="news-card__img-overlay" aria-hidden="true" style="z-index:1;"></div>
                 <div class="news-card__badge" style="z-index:2;"><span class="tag tag--blue">ECONOMÍA</span></div>
@@ -4984,7 +4992,8 @@
       document.querySelectorAll('.playlist-item').forEach((el, i) => el.classList.toggle('active', i === idx));
       showToast(`▶ Reproduciendo: ${playlistData[idx].title.substring(0, 40)}…`, 'info');
       const v = document.getElementById('mainVideo');
-      if (v) { v.src = 'video/batallando.mp4'; v.play().catch(() => { }); }
+      // ⚡ BOLT OPTIMIZATION: Correct the 404 video path to the actual valid relative asset path, and guard play() catches without surfacing fake errors via UI
+      if (v) { v.src = 'assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4'; v.play().catch(() => { }); }
     }
 
     /* ══════ VIDEO PLAYER ══════ */
@@ -5023,14 +5032,17 @@
       function updIcon(p) { const pi = `<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>`, pl = `<polygon points="5,3 19,12 5,21"/>`; if (playPauseIcon) playPauseIcon.innerHTML = p ? pi : pl; if (centerIcon) centerIcon.innerHTML = p ? pi : pl; }
 
       function startPlay() {
-        thumbnail.classList.add('hidden'); thumbnail.style.opacity = '0'; thumbnail.style.pointerEvents = 'none';
-        video.play().then(() => { isPlaying = true; updIcon(true); }).catch(() => showToast('Coloca el archivo en video/batallando.mp4 📁', 'info'));
+        // ⚡ BOLT OPTIMIZATION: Guard null elements to avoid TypeError: Cannot read properties of null (classList)
+        if (thumbnail) { thumbnail.classList.add('hidden'); thumbnail.style.opacity = '0'; thumbnail.style.pointerEvents = 'none'; }
+        // ⚡ BOLT OPTIMIZATION: Guard play() catch without surfacing fake errors via UI, as play failures are mostly due to browser autoplay policies
+        video.play().then(() => { isPlaying = true; updIcon(true); }).catch((e) => console.warn('Autoplay block or play error:', e));
       }
       if (bigPlayBtn) bigPlayBtn.addEventListener('click', startPlay);
 
       function togglePlay() {
-        if (video.paused) { video.play().then(() => { isPlaying = true; updIcon(true); pauseOverlay.classList.add('hidden'); }).catch(() => { }); }
-        else { video.pause(); isPlaying = false; updIcon(false); pauseOverlay.classList.remove('hidden'); }
+        // ⚡ BOLT OPTIMIZATION: Guard play() catch without surfacing fake errors via UI
+        if (video.paused) { video.play().then(() => { isPlaying = true; updIcon(true); if (pauseOverlay) pauseOverlay.classList.add('hidden'); }).catch((e) => console.warn('Play error:', e)); }
+        else { video.pause(); isPlaying = false; updIcon(false); if (pauseOverlay) pauseOverlay.classList.remove('hidden'); }
       }
       if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlay);
       if (centerPlay) centerPlay.addEventListener('click', togglePlay);
@@ -5038,9 +5050,10 @@
       const wrap = document.getElementById('playerWrap');
       if (wrap) wrap.addEventListener('click', e => {
         if (e.target === bigPlayBtn || e.target.closest('#bigPlayBtn')) return;
-        if (!thumbnail.classList.contains('hidden')) { startPlay(); return; }
-        togglePlay(); pauseOverlay.classList.remove('hidden'); clearTimeout(hideT);
-        hideT = setTimeout(() => { if (isPlaying) pauseOverlay.classList.add('hidden'); }, 800);
+        // ⚡ BOLT OPTIMIZATION: Guard null elements to avoid TypeError: Cannot read properties of null (classList)
+        if (thumbnail && !thumbnail.classList.contains('hidden')) { startPlay(); return; }
+        togglePlay(); if (pauseOverlay) pauseOverlay.classList.remove('hidden'); clearTimeout(hideT);
+        hideT = setTimeout(() => { if (isPlaying && pauseOverlay) pauseOverlay.classList.add('hidden'); }, 800);
       });
 
       if (skipBack) skipBack.addEventListener('click', () => { video.currentTime = Math.max(0, video.currentTime - 10); showToast('⏪ -10s', 'info'); });
