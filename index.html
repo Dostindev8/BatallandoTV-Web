@@ -16,12 +16,18 @@
   <meta property="og:url" content="https://batallando.tv" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>BatallandoTv</title>
-  <link rel="icon" type="image/png" href="assets/Batallando/Batallando TV 2024.png" width="100" height="100" />
+  <link rel="icon" type="image/png" href="assets/Batallando/Batallando%20TV%202024.png" width="100" height="100" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Barlow:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
+
+  <!-- ⚡ BOLT OPTIMIZATION: Preload critical LCP assets for faster initial paint -->
+  <link rel="preload" href="assets/Batallando/Batallando%20TV%202024.png" as="image" type="image/png" fetchpriority="high" />
+  <link rel="preload" href="assets/Batallando/Batallando6.png" as="image" type="image/png" fetchpriority="high" />
+  <link rel="preload" href="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" as="video" type="video/mp4" />
   <style>
     /* ═══════════════════════════════════════════════
    DESIGN TOKENS
@@ -3871,7 +3877,7 @@
 
     <!-- Video background -->
     <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
-      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+      <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
     </video>
 
     <!-- FX layers -->
@@ -3896,7 +3902,7 @@
       <div class="bb-cube-wrap" aria-label="Logo Batallando 3D">
         <div class="bb-face bb-face-f" style="display:flex;align-items:center;justify-content:center;">
           <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Logo"
-            style="width:85%;height:85%;object-fit:contain;transform:scale(1.2);">
+            style="width:85%;height:85%;object-fit:contain;transform:scale(1.2);" fetchpriority="high" loading="eager">
         </div>
         <div class="bb-face bb-face-bk">🇩🇴</div>
         <div class="bb-face bb-face-r">▶</div>
@@ -3940,7 +3946,7 @@
   <div class="preloader no-select" data-preaload aria-hidden="true">
     <div class="preloader__logo-wrap" style="flex-direction: column; gap: 16px;">
       <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
-        style="height: 70px; width: auto; object-fit: contain; max-width: 90vw;">
+        style="height: 70px; width: auto; object-fit: contain; max-width: 90vw;" fetchpriority="high" loading="eager">
     </div>
     <div class="preloader__bar-wrap">
       <div class="preloader__bar-fill"></div>
@@ -4001,7 +4007,7 @@
               </svg>
             </a>
             <a href="#" title="Instagram" aria-label="Instagram"><img src="images/instagram.png" alt="Instagram"
-                width="14" height="14" style="filter:invert(1)"></a>
+                width="14" height="14" style="filter:invert(1)" loading="lazy" decoding="async"></a>
           </div>
           <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/live" target="_blank" rel="noopener noreferrer"
             class="live-badge" aria-label="Ver en vivo">
@@ -4019,7 +4025,7 @@
         <div class="navbar__inner">
           <a href="#" class="navbar__logo" aria-label="Batallando — Inicio">
             <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
-              style="height: 44px; width: auto; object-fit: contain; max-width: 220px;">
+              style="height: 44px; width: auto; object-fit: contain; max-width: 220px;" fetchpriority="high" loading="eager">
           </a>
           <div class="navbar__nav">
             <a href="#" class="active" data-nav-link>Inicio</a>
@@ -4133,8 +4139,9 @@
             <div class="hero__video-badge"><span class="tag tag--live">▶ ÚLTIMO EPISODIO</span></div>
             <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
               rel="noopener noreferrer" aria-label="Ver en YouTube" style="display:block;width:100%;height:100%;">
-              <img src="/assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
-                alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" decoding="async"
+              <!-- ⚡ BOLT OPTIMIZATION: Critical above-the-fold image, load eager and assign high fetch priority -->
+              <img src="assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
+                alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" fetchpriority="high"
                 style="width:100%; height:100%; object-fit:cover; display:block;">
               <div
                 style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);pointer-events:none;">
@@ -4316,7 +4323,7 @@
               <video id="mainVideo" preload="auto" autoplay muted loop playsinline
                 style="width:100%;height:100%;display:block;object-fit:cover;"
                 aria-label="Video de Batallando con Dionisio Santana">
-                <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -4389,10 +4396,11 @@
               <div class="news-card__img-wrap" style="background:#000;">
                 <video autoplay muted playsinline loop
                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
-                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+              <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
                 </video>
+                <!-- ⚡ BOLT OPTIMIZATION: Below-the-fold image, load lazy and defer decoding -->
                 <img src="assets/Batallando/Batallando-wiski.png" class="nc-img" alt="Batallando TV"
-                  style="position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block;min-height:260px;transform-origin:bottom;" />
+                  style="position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block;min-height:260px;transform-origin:bottom;" loading="lazy" decoding="async" />
                 <div class="news-card__img-overlay" aria-hidden="true" style="z-index:2;"></div>
                 <div class="news-card__badge" style="z-index:3;"><span class="tag tag--red">EXCLUSIVO</span></div>
               </div>
@@ -4415,8 +4423,9 @@
             </article>
             <article class="news-card news-card--sm" tabindex="0" role="article">
               <div class="news-card__img-wrap">
+                <!-- ⚡ BOLT OPTIMIZATION: Below-the-fold image, load lazy and defer decoding -->
                 <img src="assets/Batallando/dioni13.png" class="nc-img" alt="Política"
-                  style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
+                  style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async" />
                 <div class="news-card__img-overlay" aria-hidden="true"></div>
                 <div class="news-card__badge"><span class="tag tag--gold">POLÍTICA</span></div>
               </div>
@@ -4440,7 +4449,7 @@
               <div class="news-card__img-wrap" style="background:#000;">
                 <video autoplay muted playsinline loop
                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
-                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+              <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
                 </video>
                 <div class="news-card__img-overlay" aria-hidden="true" style="z-index:1;"></div>
                 <div class="news-card__badge" style="z-index:2;"><span class="tag tag--blue">ECONOMÍA</span></div>
@@ -4476,8 +4485,9 @@
           <div class="host-card reveal" id="sobre-dionisio">
             <div class="host-card__photo" aria-label="Foto de Dionisio Santana"
               style="background:transparent;border:none;box-shadow:none;border-radius:0;width:120px;height:120px;overflow:visible;">
+              <!-- ⚡ BOLT OPTIMIZATION: Below-the-fold image, load lazy and defer decoding -->
               <img src="assets/Batallando/Dinodioni.png" alt="Dionisio Santana"
-                style="width:100%;height:100%;object-fit:contain;object-position:bottom;">
+                style="width:100%;height:100%;object-fit:contain;object-position:bottom;" loading="lazy" decoding="async">
             </div>
             <div class="host-card__name">Dionisio Santana</div>
             <div class="host-card__role">Conductor &amp; Periodista</div>
@@ -4606,7 +4616,7 @@
         <div>
           <div style="margin-bottom:16px;">
             <img src="assets/Batallando/Batallando%20TV%202024.png" alt="Batallando Logo"
-              style="height: 52px; width: auto; object-fit: contain; max-width: 280px;">
+              style="height: 52px; width: auto; object-fit: contain; max-width: 280px;" loading="lazy" decoding="async">
           </div>
           <p class="footer__brand-desc">El programa de noticias y análisis político más directo de República Dominicana.
             Información sin filtros, debates reales y la verdad que necesitas.</p>
@@ -4913,7 +4923,7 @@
             <div class="news-card__footer">
               <div class="news-card__author">
                 <div class="news-card__author-avatar" style="background:transparent;">
-                  <img src="assets/Batallando/Batallando TV 2024.png" draggable="false" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);">
+                  <img src="assets/Batallando/Batallando%20TV%202024.png" draggable="false" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);" loading="lazy" decoding="async">
                 </div>Batallando TV
               </div>
               <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank" rel="noopener noreferrer" class="news-card__read-more" aria-label="Ver en YouTube">Leer más ${ARROW}</a>
@@ -4968,7 +4978,7 @@
       const g = document.getElementById('blog-grid'); if (!g) return;
       g.innerHTML = blogData.map((i, idx) => {
         const img = CARD_IMGS[(idx + 2) % CARD_IMGS.length];
-        return `<article class="blog-card reveal" role="listitem" tabindex="0"><div class="blog-card__img"><img src="${img.src}" style="width:100%;height:100%;object-fit:cover;object-position:${img.pos};" alt=""/></div><div class="blog-card__body"><div class="blog-card__tag"><span class="tag tag--${i.tagClass}">${i.tag}</span></div><h3 class="blog-card__title">${i.title}</h3><p class="blog-card__excerpt">${i.excerpt}</p><div class="blog-card__footer"><div class="blog-card__avatar" style="background:transparent;"><img src="assets/Batallando/Batallando TV 2024.png" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);"></div><div><div style="font-weight:600;color:var(--charcoal);font-size:13px;">${i.authorName}</div><div><time datetime="${i.isoDate}">${i.date}</time> · ${i.mins} min</div></div></div></div></article>`;
+        return `<article class="blog-card reveal" role="listitem" tabindex="0"><div class="blog-card__img"><img src="${img.src}" style="width:100%;height:100%;object-fit:cover;object-position:${img.pos};" alt="" loading="lazy" decoding="async"/></div><div class="blog-card__body"><div class="blog-card__tag"><span class="tag tag--${i.tagClass}">${i.tag}</span></div><h3 class="blog-card__title">${i.title}</h3><p class="blog-card__excerpt">${i.excerpt}</p><div class="blog-card__footer"><div class="blog-card__avatar" style="background:transparent;"><img src="assets/Batallando/Batallando%20TV%202024.png" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);" loading="lazy" decoding="async"></div><div><div style="font-weight:600;color:var(--charcoal);font-size:13px;">${i.authorName}</div><div><time datetime="${i.isoDate}">${i.date}</time> · ${i.mins} min</div></div></div></div></article>`;
       }).join('');
       observeReveal();
     }
@@ -4978,13 +4988,13 @@
     }
     function renderPlaylist() {
       const el = document.getElementById('videoPlaylist'); if (!el) return;
-      el.innerHTML = playlistData.map((i, n) => `<div class="playlist-item${n === 0 ? ' active' : ''}" onclick="selectPlaylistItem(${n})" role="button" tabindex="0" aria-label="Reproducir: ${i.title}"><div class="playlist-item__thumb"><div class="playlist-item__thumb-bg" style="background:${i.gradient};display:flex;align-items:center;justify-content:center;"><img src="assets/Batallando/Batallando TV 2024.png" style="width:60%;height:auto;object-fit:contain;" alt=""/></div><div class="playlist-item__play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="playlist-item__info"><div class="playlist-item__title">${i.title}</div><div class="playlist-item__meta">👁 ${i.views}</div></div><span class="playlist-item__duration">${i.duration}</span></div>`).join('');
+      el.innerHTML = playlistData.map((i, n) => `<div class="playlist-item${n === 0 ? ' active' : ''}" onclick="selectPlaylistItem(${n})" role="button" tabindex="0" aria-label="Reproducir: ${i.title}"><div class="playlist-item__thumb"><div class="playlist-item__thumb-bg" style="background:${i.gradient};display:flex;align-items:center;justify-content:center;"><img src="assets/Batallando/Batallando%20TV%202024.png" style="width:60%;height:auto;object-fit:contain;" alt="" loading="lazy" decoding="async"/></div><div class="playlist-item__play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="playlist-item__info"><div class="playlist-item__title">${i.title}</div><div class="playlist-item__meta">👁 ${i.views}</div></div><span class="playlist-item__duration">${i.duration}</span></div>`).join('');
     }
     function selectPlaylistItem(idx) {
       document.querySelectorAll('.playlist-item').forEach((el, i) => el.classList.toggle('active', i === idx));
       showToast(`▶ Reproduciendo: ${playlistData[idx].title.substring(0, 40)}…`, 'info');
       const v = document.getElementById('mainVideo');
-      if (v) { v.src = 'video/batallando.mp4'; v.play().catch(() => { }); }
+      if (v) { v.src = 'assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4'; v.play().catch(() => { }); }
     }
 
     /* ══════ VIDEO PLAYER ══════ */
