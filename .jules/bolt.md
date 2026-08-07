@@ -1,0 +1,3 @@
+## 2026-08-07 - [Fixed Background Video Resource Pathing and Video Autoplay / Preload Optimization]
+**Learning:** Hardcoded asset references to invalid or generic paths like 'images/' or 'video/' trigger 404 responses, which delay main thread execution and waste network request cycles. Additionally, using `preload="auto"` on autoplaying background videos forces aggressive, non-critical bandwidth consumption that delays key above-the-fold content.
+**Action:** Always verify asset existence and use URI-encoded relative paths pointing to correct directories (e.g., 'assets/Batallando/'). Apply `preload="metadata"` to background loop videos to avoid unnecessary data downloads while ensuring fast video playback initiation.
