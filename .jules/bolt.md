@@ -1,0 +1,3 @@
+## 2026-08-10 - [Intro Background Video and Resource Encoding Optimization]
+**Learning:** Found that the intro page video referenced a non-existent path `images/SIN_FIN_-_BATALLANDO.mp4` resulting in 404 resource request failures, and asset paths with unencoded spaces caused network warnings. Autoplay catch handling can trigger unneeded and distracting toast errors.
+**Action:** Always verify all media file paths and ensure URI-encoding is applied consistently to all assets with spaces. Avoid displaying generic toast failures on video autoplay block exceptions as browsers enforce autoplay policies. Use preload="metadata" to keep loading fast on autoplay elements.
