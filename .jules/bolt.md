@@ -1,0 +1,3 @@
+## 2026-05-03 - URI-encoding static template assets & Preloading LCP assets
+**Learning:** Found critical 404 errors due to spaces in file/asset names (like 'SIN FIN - BATALLANDO.mp4' and 'Batallando TV 2024.png') and non-existent folders ('video/') in this static repository, which degrades LCP performance and user experience. Also, preloading above-the-fold critical media assets significantly speeds up rendering in vanilla JS/HTML projects without bundlers.
+**Action:** Always verify relative paths recursively in static HTML code, replace non-existent asset directories with valid asset locations, URI-encode spaces in filenames as '%20', and add preconnect/preload hints for critical CDN scripts and hero images in the document `<head>`.
