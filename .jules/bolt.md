@@ -1,0 +1,5 @@
+# Bolt's Performance Journal ⚡
+
+## 2026-05-03 - Solving Static Site LCP Delays and Asset 404 Failures
+**Learning:** In static HTML applications that rely on client-side JS template literals for rendering below-the-fold sections, Largest Contentful Paint (LCP) assets (like above-the-fold hero images or background video assets) suffer from major discovery delays. Additionally, un-encoded spaces in asset paths or absolute paths lead to silent 404 network errors, which blocks resource scheduling pipelines in Chromium. Surfacing video play failures caused by browser autoplay restrictions to users can degrade UI/UX.
+**Action:** Preload the above-the-fold LCP image in the HTML head and connection-warm CDNs using crossorigin preconnect. Always URI-encode asset paths with spaces (use %20) and verify with custom validation tools. Apply fetchpriority="high" and loading="eager" on LCP images, but use loading="lazy" and decoding="async" for all below-the-fold elements. Avoid raising video play catch errors as UI toast alerts.
