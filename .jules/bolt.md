@@ -1,0 +1,3 @@
+## 2026-05-03 - Fix 404 Media Asset Paths to Restore Video Playback & LCP
+**Learning:** Hardcoded non-existent asset paths (e.g. `images/SIN_FIN_-_BATALLANDO.mp4` and `video/batallando.mp4`) cause critical 404 errors, causing the video intro fallback timer to trigger after a 3-second delay and breaking interactive video playlist playback. Standardizing media URLs to `assets/Batallando/` and URI-encoding spaces resolves resource loading failures immediately.
+**Action:** Perform automated regex scans of asset references across all HTML files and JS template strings to catch non-existent path aliases and unencoded spaces before deployment.
