@@ -1,0 +1,3 @@
+## 2026-08-31 - Fix 404 video asset path and URI encoding for critical intro background
+**Learning:** Hardcoded non-existent asset paths (`images/SIN_FIN_-_BATALLANDO.mp4`) cause initial HTTP 404 resource errors, completely stalling background media rendering and causing resource discovery delays. Correcting to URI-encoded relative paths (`assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4`) ensures immediate HTTP 200 resource load without unnecessary request failures or layout shifts.
+**Action:** Always scan for unencoded space characters in asset URLs and verify resource paths against actual disk directory structures before loading critical media.
