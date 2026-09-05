@@ -1,0 +1,3 @@
+## 2026-03-30 - Hero Image Preloading & URI Encoding for Critical LCP Assets
+**Learning:** Preloading the hero image in `<head>` with `fetchpriority="high"` drastically accelerates LCP resource discovery in static HTML sites where main assets are otherwise discovered later during DOM tree parsing. Additionally, unencoded space characters in static media paths (`assets/Batallando/SIN FIN - BATALLANDO.mp4`) can lead to 404/network errors in standard HTTP requests, delaying page interactive state.
+**Action:** Always URI-encode asset paths (`%20` for spaces) and add preloads with explicit resource priority (`fetchpriority="high"`) in `<head>` for critical above-the-fold imagery.
