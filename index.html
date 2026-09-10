@@ -16,7 +16,8 @@
   <meta property="og:url" content="https://batallando.tv" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>BatallandoTv</title>
-  <link rel="icon" type="image/png" href="assets/Batallando/Batallando TV 2024.png" width="100" height="100" />
+  <!-- ⚡ BOLT OPTIMIZATION: URI-encode space in favicon path to prevent loading delays and parsing errors -->
+  <link rel="icon" type="image/png" href="assets/Batallando/Batallando%20TV%202024.png" width="100" height="100" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -3870,8 +3871,9 @@
     </div>
 
     <!-- Video background -->
+    <!-- ⚡ BOLT OPTIMIZATION: Fix broken video path (404 error) and URI-encode space in source URL -->
     <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
-      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+      <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
     </video>
 
     <!-- FX layers -->
@@ -4316,7 +4318,8 @@
               <video id="mainVideo" preload="auto" autoplay muted loop playsinline
                 style="width:100%;height:100%;display:block;object-fit:cover;"
                 aria-label="Video de Batallando con Dionisio Santana">
-                <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                <!-- ⚡ BOLT OPTIMIZATION: URI-encode space in video URL -->
+                <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -4389,7 +4392,8 @@
               <div class="news-card__img-wrap" style="background:#000;">
                 <video autoplay muted playsinline loop
                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
-                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                  <!-- ⚡ BOLT OPTIMIZATION: URI-encode space in video URL -->
+                  <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
                 </video>
                 <img src="assets/Batallando/Batallando-wiski.png" class="nc-img" alt="Batallando TV"
                   style="position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block;min-height:260px;transform-origin:bottom;" />
@@ -4440,7 +4444,8 @@
               <div class="news-card__img-wrap" style="background:#000;">
                 <video autoplay muted playsinline loop
                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
-                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                  <!-- ⚡ BOLT OPTIMIZATION: URI-encode space in video URL -->
+                  <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
                 </video>
                 <div class="news-card__img-overlay" aria-hidden="true" style="z-index:1;"></div>
                 <div class="news-card__badge" style="z-index:2;"><span class="tag tag--blue">ECONOMÍA</span></div>
@@ -4913,7 +4918,8 @@
             <div class="news-card__footer">
               <div class="news-card__author">
                 <div class="news-card__author-avatar" style="background:transparent;">
-                  <img src="assets/Batallando/Batallando TV 2024.png" draggable="false" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);">
+                  <!-- ⚡ BOLT OPTIMIZATION: URI-encode space in asset path -->
+                  <img src="assets/Batallando/Batallando%20TV%202024.png" draggable="false" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);">
                 </div>Batallando TV
               </div>
               <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank" rel="noopener noreferrer" class="news-card__read-more" aria-label="Ver en YouTube">Leer más ${ARROW}</a>
@@ -4968,7 +4974,8 @@
       const g = document.getElementById('blog-grid'); if (!g) return;
       g.innerHTML = blogData.map((i, idx) => {
         const img = CARD_IMGS[(idx + 2) % CARD_IMGS.length];
-        return `<article class="blog-card reveal" role="listitem" tabindex="0"><div class="blog-card__img"><img src="${img.src}" style="width:100%;height:100%;object-fit:cover;object-position:${img.pos};" alt=""/></div><div class="blog-card__body"><div class="blog-card__tag"><span class="tag tag--${i.tagClass}">${i.tag}</span></div><h3 class="blog-card__title">${i.title}</h3><p class="blog-card__excerpt">${i.excerpt}</p><div class="blog-card__footer"><div class="blog-card__avatar" style="background:transparent;"><img src="assets/Batallando/Batallando TV 2024.png" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);"></div><div><div style="font-weight:600;color:var(--charcoal);font-size:13px;">${i.authorName}</div><div><time datetime="${i.isoDate}">${i.date}</time> · ${i.mins} min</div></div></div></div></article>`;
+        /* ⚡ BOLT OPTIMIZATION: URI-encode space in asset path */
+        return `<article class="blog-card reveal" role="listitem" tabindex="0"><div class="blog-card__img"><img src="${img.src}" style="width:100%;height:100%;object-fit:cover;object-position:${img.pos};" alt=""/></div><div class="blog-card__body"><div class="blog-card__tag"><span class="tag tag--${i.tagClass}">${i.tag}</span></div><h3 class="blog-card__title">${i.title}</h3><p class="blog-card__excerpt">${i.excerpt}</p><div class="blog-card__footer"><div class="blog-card__avatar" style="background:transparent;"><img src="assets/Batallando/Batallando%20TV%202024.png" style="width:100%;height:100%;object-fit:contain;transform:scale(1.5);"></div><div><div style="font-weight:600;color:var(--charcoal);font-size:13px;">${i.authorName}</div><div><time datetime="${i.isoDate}">${i.date}</time> · ${i.mins} min</div></div></div></div></article>`;
       }).join('');
       observeReveal();
     }
@@ -4978,7 +4985,8 @@
     }
     function renderPlaylist() {
       const el = document.getElementById('videoPlaylist'); if (!el) return;
-      el.innerHTML = playlistData.map((i, n) => `<div class="playlist-item${n === 0 ? ' active' : ''}" onclick="selectPlaylistItem(${n})" role="button" tabindex="0" aria-label="Reproducir: ${i.title}"><div class="playlist-item__thumb"><div class="playlist-item__thumb-bg" style="background:${i.gradient};display:flex;align-items:center;justify-content:center;"><img src="assets/Batallando/Batallando TV 2024.png" style="width:60%;height:auto;object-fit:contain;" alt=""/></div><div class="playlist-item__play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="playlist-item__info"><div class="playlist-item__title">${i.title}</div><div class="playlist-item__meta">👁 ${i.views}</div></div><span class="playlist-item__duration">${i.duration}</span></div>`).join('');
+      /* ⚡ BOLT OPTIMIZATION: URI-encode space in asset path */
+      el.innerHTML = playlistData.map((i, n) => `<div class="playlist-item${n === 0 ? ' active' : ''}" onclick="selectPlaylistItem(${n})" role="button" tabindex="0" aria-label="Reproducir: ${i.title}"><div class="playlist-item__thumb"><div class="playlist-item__thumb-bg" style="background:${i.gradient};display:flex;align-items:center;justify-content:center;"><img src="assets/Batallando/Batallando%20TV%202024.png" style="width:60%;height:auto;object-fit:contain;" alt=""/></div><div class="playlist-item__play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="playlist-item__info"><div class="playlist-item__title">${i.title}</div><div class="playlist-item__meta">👁 ${i.views}</div></div><span class="playlist-item__duration">${i.duration}</span></div>`).join('');
     }
     function selectPlaylistItem(idx) {
       document.querySelectorAll('.playlist-item').forEach((el, i) => el.classList.toggle('active', i === idx));
