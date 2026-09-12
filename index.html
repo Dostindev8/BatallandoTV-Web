@@ -3870,8 +3870,9 @@
     </div>
 
     <!-- Video background -->
+    <!-- ⚡ BOLT OPTIMIZATION: Fixed 404 video path and URI-encoded URL -->
     <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
-      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+      <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
     </video>
 
     <!-- FX layers -->
@@ -4133,7 +4134,7 @@
             <div class="hero__video-badge"><span class="tag tag--live">▶ ÚLTIMO EPISODIO</span></div>
             <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
               rel="noopener noreferrer" aria-label="Ver en YouTube" style="display:block;width:100%;height:100%;">
-              <img src="/assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
+              <img src="assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
                 alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" decoding="async"
                 style="width:100%; height:100%; object-fit:cover; display:block;">
               <div
@@ -4316,7 +4317,7 @@
               <video id="mainVideo" preload="auto" autoplay muted loop playsinline
                 style="width:100%;height:100%;display:block;object-fit:cover;"
                 aria-label="Video de Batallando con Dionisio Santana">
-                <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -4389,7 +4390,7 @@
               <div class="news-card__img-wrap" style="background:#000;">
                 <video autoplay muted playsinline loop
                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
-                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                  <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
                 </video>
                 <img src="assets/Batallando/Batallando-wiski.png" class="nc-img" alt="Batallando TV"
                   style="position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block;min-height:260px;transform-origin:bottom;" />
@@ -4440,7 +4441,7 @@
               <div class="news-card__img-wrap" style="background:#000;">
                 <video autoplay muted playsinline loop
                   style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.8;">
-                  <source src="assets/Batallando/SIN FIN - BATALLANDO.mp4" type="video/mp4">
+                  <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
                 </video>
                 <div class="news-card__img-overlay" aria-hidden="true" style="z-index:1;"></div>
                 <div class="news-card__badge" style="z-index:2;"><span class="tag tag--blue">ECONOMÍA</span></div>
@@ -4984,7 +4985,7 @@
       document.querySelectorAll('.playlist-item').forEach((el, i) => el.classList.toggle('active', i === idx));
       showToast(`▶ Reproduciendo: ${playlistData[idx].title.substring(0, 40)}…`, 'info');
       const v = document.getElementById('mainVideo');
-      if (v) { v.src = 'video/batallando.mp4'; v.play().catch(() => { }); }
+      if (v) { v.src = 'assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4'; v.play().catch(() => { }); }
     }
 
     /* ══════ VIDEO PLAYER ══════ */
@@ -5024,7 +5025,7 @@
 
       function startPlay() {
         thumbnail.classList.add('hidden'); thumbnail.style.opacity = '0'; thumbnail.style.pointerEvents = 'none';
-        video.play().then(() => { isPlaying = true; updIcon(true); }).catch(() => showToast('Coloca el archivo en video/batallando.mp4 📁', 'info'));
+        video.play().then(() => { isPlaying = true; updIcon(true); }).catch(() => showToast('Error al reproducir el video 📁', 'info'));
       }
       if (bigPlayBtn) bigPlayBtn.addEventListener('click', startPlay);
 

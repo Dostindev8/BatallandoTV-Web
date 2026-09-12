@@ -1,0 +1,3 @@
+## 2026-09-12 - URI Encoding and Path Verification for Critical Media LCP Assets
+**Learning:** Hardcoded non-existent paths (e.g. `images/SIN_FIN_-_BATALLANDO.mp4` and `video/batallando.mp4`) and absolute leading slashes (e.g. `/assets/Batallando/...`) cause 404 resource errors and fallback delays. Additionally, unencoded spaces in media URLs within HTML/JS template literals fail strict URI resolution in static hosting environments.
+**Action:** Ensure all media assets point to valid relative paths in `assets/Batallando/` and manually URI-encode spaces (e.g., `%20`) to prevent LCP and video load delays.
