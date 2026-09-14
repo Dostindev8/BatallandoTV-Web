@@ -1,0 +1,3 @@
+## 2026-03-30 - Fix 404 video source path to prevent 3s preloader fallback delay
+**Learning:** In this codebase, the intro video (`#bb-vbg`) path in `index.html` defaulted to a missing path (`images/SIN_FIN_-_BATALLANDO.mp4`). Failing to load the media triggered the JavaScript `canplay` fallback timeout after 3000ms, delaying intro initialization. Correcting the path to `assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4` avoids the 404 network error and bypasses the 3s fallback delay.
+**Action:** Verify that media assets exist and paths are URI-encoded with `%20` so video elements load immediately without triggering fallback timeouts.
