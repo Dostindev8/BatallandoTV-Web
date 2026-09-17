@@ -3870,8 +3870,9 @@
     </div>
 
     <!-- Video background -->
+    <!-- ⚡ BOLT OPTIMIZATION: Fixed 404 video path from images/ to URI-encoded assets/Batallando/ to eliminate 3000ms delay and 404 network error -->
     <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
-      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+      <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
     </video>
 
     <!-- FX layers -->
@@ -4133,7 +4134,7 @@
             <div class="hero__video-badge"><span class="tag tag--live">▶ ÚLTIMO EPISODIO</span></div>
             <a href="https://www.youtube.com/@BATALLANDOCONDIONISIOSANTANA/videos" target="_blank"
               rel="noopener noreferrer" aria-label="Ver en YouTube" style="display:block;width:100%;height:100%;">
-              <img src="/assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
+              <img src="assets/Batallando/Batallando6.png" title="Batallando — Canal YouTube"
                 alt="Último Episodio de Batallando con Dionisio Santana" loading="eager" decoding="async"
                 style="width:100%; height:100%; object-fit:cover; display:block;">
               <div
@@ -4984,7 +4985,8 @@
       document.querySelectorAll('.playlist-item').forEach((el, i) => el.classList.toggle('active', i === idx));
       showToast(`▶ Reproduciendo: ${playlistData[idx].title.substring(0, 40)}…`, 'info');
       const v = document.getElementById('mainVideo');
-      if (v) { v.src = 'video/batallando.mp4'; v.play().catch(() => { }); }
+      /* ⚡ BOLT OPTIMIZATION: Fixed non-existent video/ path to valid URI-encoded asset path to prevent 404 on click */
+      if (v) { v.src = 'assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4'; v.play().catch(() => { }); }
     }
 
     /* ══════ VIDEO PLAYER ══════ */
