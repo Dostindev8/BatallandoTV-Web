@@ -1,0 +1,3 @@
+## 2026-09-19 - 404 Video Asset Path Triggers Mandatory 3s Timeout
+**Learning:** Referencing non-existent media asset paths (e.g., `images/SIN_FIN_-_BATALLANDO.mp4` instead of `assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4`) causes video element load failure (`canplay` event never fires). In this codebase, this triggered a mandatory 3000ms `setTimeout` fallback delay before initializing the intro overlay.
+**Action:** Always verify local media file paths in static HTML/JS templates, URI-encode spaces (e.g. `%20`), and ensure relative assets point to `assets/Batallando/` to eliminate artificial 3-second initialization delays.
