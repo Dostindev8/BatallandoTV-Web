@@ -19,6 +19,8 @@
   <link rel="icon" type="image/png" href="assets/Batallando/Batallando TV 2024.png" width="100" height="100" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- ⚡ BOLT OPTIMIZATION: Preconnect to cdnjs for faster Three.js script discovery & connection setup -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Barlow:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
@@ -3870,8 +3872,9 @@
     </div>
 
     <!-- Video background -->
+    <!-- ⚡ BOLT OPTIMIZATION: Fix 404 path on intro video background to prevent 3000ms delay in intro initialization -->
     <video id="bb-vbg" autoplay muted playsinline loop preload="auto" disablePictureInPicture aria-hidden="true">
-      <source src="images/SIN_FIN_-_BATALLANDO.mp4" type="video/mp4">
+      <source src="assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4" type="video/mp4">
     </video>
 
     <!-- FX layers -->
