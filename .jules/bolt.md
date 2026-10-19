@@ -1,0 +1,3 @@
+## 2026-03-31 - Background Video 404 Triggers 3s JavaScript Fallback Timeout
+**Learning:** In `index.html`, specifying an invalid or missing video path (e.g., `images/SIN_FIN_-_BATALLANDO.mp4`) causes a 404 network failure on the `#bb-vbg` element. The inline JavaScript script waits for the `canplay` event on `#bb-vbg` before revealing the UI overlay, falling back to a hardcoded 3,000ms `setTimeout` penalty when the video fails to load.
+**Action:** Always verify that critical background video paths exist in `assets/Batallando/` and are properly URI-encoded to prevent the mandatory 3-second delay on page reveal.
