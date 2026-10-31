@@ -1,0 +1,3 @@
+## 2026-05-04 - Fix Intro Video 404 & 3s Delay
+**Learning:** In this codebase, if `#bb-vbg` fails to load due to a missing or broken video path (404), the `canplay` event never fires. The intro sequence waits for the full 3000ms fallback timeout (`setTimeout(() => { if (!entered && ldr.style.display !== 'none') revealIntro(); }, 3000)`) before revealing the intro screen.
+**Action:** Always ensure `#bb-vbg` points to the existing video asset in `assets/Batallando/` with URI encoding (`assets/Batallando/SIN%20FIN%20-%20BATALLANDO.mp4`) to avoid 404s and eliminate the 3-second initialization delay.
