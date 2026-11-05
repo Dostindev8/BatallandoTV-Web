@@ -1,0 +1,3 @@
+## 2026-04-18 - Missing intro background video delays JS initialization by 3000ms
+**Learning:** In this codebase, the 3D intro overlay's JS animation engine waits for the `<video id="bb-vbg">` `canplay` event before firing `revealIntro()`. When pointing to an invalid asset path (`images/SIN_FIN_-_BATALLANDO.mp4`), `canplay` never triggers, forcing execution to hit a hardcoded 3000ms `setTimeout` fallback delay before the intro content reveals and becomes interactive.
+**Action:** Always verify that `#bb-vbg` and other media sources point to existing relative assets in `assets/Batallando/` with URI-encoded paths to avoid the 3s fallback delay and eliminate 404 network overhead.
