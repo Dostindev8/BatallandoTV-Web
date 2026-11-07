@@ -1,0 +1,3 @@
+## 2026-05-04 - Intro Video 404 Triggering 3000ms Fallback Timeout
+**Learning:** In `index.html`, the background intro video element `#bb-vbg` referenced `images/SIN_FIN_-_BATALLANDO.mp4` which returned a 404 error. The intro reveal sequence relied on the `canplay` event of `#bb-vbg`, falling back to a 3000ms `setTimeout` if `canplay` never fired. This caused a mandatory ~3-second delay on every initial page load before the intro branding and CTA buttons could be rendered.
+**Action:** Always point media sources to valid paths (`assets/Batallando/...`) and URI-encode spaces (`%20`) to allow media `canplay` events to trigger promptly (~2300ms vs ~5100ms).
