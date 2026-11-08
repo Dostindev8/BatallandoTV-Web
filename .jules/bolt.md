@@ -1,0 +1,3 @@
+## 2026-11-08 - Intro Video Path Resolution & Fallback Timeout
+**Learning:** In `index.html`, `<video id="bb-vbg">` pointed to `images/SIN_FIN_-_BATALLANDO.mp4` which resulted in a 404 response. Because the intro reveal logic relied on a `canplay` event with a 3000ms fallback timeout (`setTimeout(..., 3000)`), any failed media load incurred a mandatory 3-second delay plus network latency before presenting the intro.
+**Action:** Always verify that critical video elements point to existing URI-encoded paths in `assets/Batallando/` so that the `canplay` event fires immediately upon initial buffering rather than stalling until the fallback timeout.
