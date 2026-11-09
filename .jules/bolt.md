@@ -1,0 +1,3 @@
+## 2026-03-30 - Splash Intro Background Video 404 Fallback Stall
+**Learning:** In this static site's intro loader script, a missing or broken `<source>` on `#bb-vbg` causes the `canplay` event to never fire, forcing the intro transition to stall for a hardcoded 3000ms `setTimeout` fallback delay before revealing the interactive splash screen.
+**Action:** When auditing initial page load or splash intro latency, verify `#bb-vbg` and other media sources resolve to valid relative paths (e.g., `assets/Batallando/...`) with proper URL encoding to allow event-driven initialization rather than waiting out safety timeouts.
